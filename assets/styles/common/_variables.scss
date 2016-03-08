@@ -1,0 +1,62 @@
+// Myriad Fonds
+
+@font-face {
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 200;
+src: local('Myriad Pro Light'), url('./fonts/MyriadPro-Light.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 400;
+src: local('Myriad Pro Regular'), url('./fonts/MyriadPro-Regular.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 500;
+src: local('Myriad Pro Condensed'), url('./fonts/MyriadPro-Cond.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 600;
+src: local('Myriad Pro Semibold'), url('./fonts/MyriadPro-Semibold.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 700;
+src: local('Myriad Pro Bold Condensed'), url('./fonts/MyriadPro-BoldCond.woff') format('woff');
+}
+
+
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Colors
+$brand-primary:         #d9a300;
+$brand-secondary:       #071259;
+$link-color:            $brand-secondary;
+$link-hover-color:      $brand-primary;
+$headings-color:        $brand-secondary;
+$hover-color:           #e23e1b;
+
+//Fonts
+$font-family-sans-serif:  'Myriad Pro', Helvetica, Arial, sans-serif;
+$font-size-base:          15px;
+$text-color:              #222;
+
+// Grid settings
+$main-sm-columns:         12;
+$sidebar-sm-columns:      3;
+$grid-gutter-width:       48px;
+$screen-sm:               768px;
+$grid-float-breakpoint:   $screen-sm+1;
+
+
+// Buttons
+
+
+// Nav
+
+$nav-link-padding:  15px 12px;
+$nav-link-hover-bg: transparent;
+
+
+$component-active-color:    $brand-primary;

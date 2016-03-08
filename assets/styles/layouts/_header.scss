@@ -1,0 +1,64 @@
+header.banner{
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 1s ease-in-out;
+  background-image: url('../images/default_page_bg.png');
+  body.home &{
+    background-image: none;
+  }
+  /*
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  */
+  @media only screen and (min-width:$screen-sm){
+    min-height: 300px;
+    body.home &{
+      min-height: 790px;
+    }
+  }
+  .nav-container{
+    background-color: #fff;
+    @media only screen and (min-width:$screen-sm){
+      position: absolute;
+      top:24px;
+      width: 100%;
+    }
+    .navbar{
+      border-radius: 0;
+      margin-bottom: 0;
+      border:medium none;
+      .navbar-brand {
+          float: left;
+          padding: 12px 0 22px 0;
+          @media(min-width:$screen-lg){
+            margin-right:50px;
+          }
+          height: auto;
+          img{
+            max-width: 100%;
+            height: auto;
+          }
+      }
+      .navbar-collapse{
+        text-transform: uppercase;
+        font-size: 18px;
+        @media(min-width:$screen-sm){
+          margin-top:24px;
+        }
+        .nav{
+          .dropdown-toggle .caret { display:none; }
+          li.active a, li a:hover, li.current-menu-parent>a, li.current_page_parent>a{
+            color: $brand-primary;
+            background-color:transparent;
+          }
+        }
+      }
+    }
+  }
+
+}
+

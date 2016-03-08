@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'flexslider-icon';
+  src:  url('../fonts/flexslider-icon.eot');
+  src:  url('../fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/flexslider-icon.woff') format('woff'),
+        url('../fonts/flexslider-icon.ttf') format('truetype'),
+        url('../fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.flexslider {
+  margin: 92px 0 60px;
+  background: transparent;
+  border: medium none;
+  position: relative;
+  zoom: 1;
+  color: $brand-primary;
+  .slides {
+    zoom: 1;
+    text-align: center;
+    img {
+      height: auto;
+      -moz-user-select: none;
+    }
+    .slider_text{
+      margin: 177px 0;
+      h2{
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 1em;
+        margin: 0;
+        padding: 0;
+      }
+      h3{
+        font-size: 25px;
+        padding:0 25px;
+        margin:16px 0;
+      }
+      a.btn{
+        font-size: 22px;
+        font-weight: 700;
+      }
+    }
+
+    .slider_image{
+      text-align: center;
+      img{
+        width: auto;
+        max-width: 100%;
+        margin:0 auto;
+      }
+    }
+  }
+}
+
+.flex-direction-nav a {
+  text-decoration: none;
+  display: block;
+  width: 25px;
+  height: 31px;
+  margin: -25px 0 0;
+  position: absolute;
+  top: 40%;
+  z-index: 10;
+  opacity: 1;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+.flex-direction-nav a:before {
+  display: inline-block;
+  content: '';
+  color: $brand-secondary;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+.flex-direction-nav a.flex-next:before {
+  content: '';
+
+}
+.flex-direction-nav .flex-prev {
+  background-image: url('../images/slider_left.png');
+  left: -24px;
+}
+.flex-direction-nav .flex-next {
+  right: -24px;
+  text-align: right;
+  background-image: url('../images/slider_right.png');
+}
+.flexslider:hover .flex-direction-nav .flex-prev {
+  opacity: 0.7;
+  left: -24px;
+}
+.flexslider:hover .flex-direction-nav .flex-prev:hover {
+  opacity: 1;
+}
+.flexslider:hover .flex-direction-nav .flex-next {
+  opacity: 0.7;
+  right: -24px;
+}
