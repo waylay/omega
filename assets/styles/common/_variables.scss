@@ -1,28 +1,28 @@
 // Myriad Fonds
 
 @font-face {
-font-family: 'Myriad Pro'; font-style: normal; font-weight: 200;
-src: local('Myriad Pro Light'), url('./fonts/MyriadPro-Light.woff') format('woff');
+font-family: 'Myriad Pro'; font-style: normal; font-weight: 300;
+src: local('Myriad Pro Light'), url('../fonts/MyriadPro-Light.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Myriad Pro'; font-style: normal; font-weight: 400;
-src: local('Myriad Pro Regular'), url('./fonts/MyriadPro-Regular.woff') format('woff');
+src: local('Myriad Pro Regular'), url('../fonts/MyriadPro-Regular.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Myriad Pro'; font-style: normal; font-weight: 500;
-src: local('Myriad Pro Condensed'), url('./fonts/MyriadPro-Cond.woff') format('woff');
+src: local('Myriad Pro Condensed'), url('../fonts/MyriadPro-Cond.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Myriad Pro'; font-style: normal; font-weight: 600;
-src: local('Myriad Pro Semibold'), url('./fonts/MyriadPro-Semibold.woff') format('woff');
+src: local('Myriad Pro Semibold'), url('../fonts/MyriadPro-Semibold.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Myriad Pro'; font-style: normal; font-weight: 700;
-src: local('Myriad Pro Bold Condensed'), url('./fonts/MyriadPro-BoldCond.woff') format('woff');
+src: local('Myriad Pro Bold Condensed'), url('../fonts/MyriadPro-BoldCond.woff') format('woff');
 }
 
 
@@ -41,6 +41,8 @@ $hover-color:           #e23e1b;
 $font-family-sans-serif:  'Myriad Pro', Helvetica, Arial, sans-serif;
 $font-size-base:          15px;
 $text-color:              #222;
+$headings-font-weight:    400;
+
 
 // Grid settings
 $main-sm-columns:         12;

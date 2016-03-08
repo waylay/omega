@@ -7,48 +7,40 @@ header.banner{
   body.home &{
     background-image: none;
   }
-  /*
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
-  */
-  @media only screen and (min-width:$screen-sm){
-    min-height: 300px;
-    body.home &{
-      min-height: 790px;
+  .phone-facebook{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    position: absolute;
+    top:5px;
+    right:5px;
+    padding-top: 8px;
+    color: $brand-secondary;
+    img{
+      padding-left: 13px;
     }
   }
   .nav-container{
     background-color: #fff;
-    @media only screen and (min-width:$screen-sm){
-      position: absolute;
-      top:24px;
-      width: 100%;
+    .container{
+      padding: 0;
     }
     .navbar{
       border-radius: 0;
       margin-bottom: 0;
       border:medium none;
       .navbar-brand {
-          float: left;
-          padding: 12px 0 22px 0;
-          @media(min-width:$screen-lg){
-            margin-right:50px;
-          }
-          height: auto;
-          img{
-            max-width: 100%;
-            height: auto;
-          }
+        float: left;
+        margin: 15px 13px;
+        padding: 0;
+        img{
+          width: 163px;
+          height: 42px;
+        }
       }
       .navbar-collapse{
         text-transform: uppercase;
         font-size: 18px;
-        @media(min-width:$screen-sm){
-          margin-top:24px;
-        }
+        font-weight: 400;
         .nav{
           .dropdown-toggle .caret { display:none; }
           li.active a, li a:hover, li.current-menu-parent>a, li.current_page_parent>a{
@@ -60,5 +52,36 @@ header.banner{
     }
   }
 
+
+  // Tablets
+  @media(min-width:$screen-sm){
+    min-height: 300px;
+    body.home &{
+      min-height: 790px;
+    }
+    .nav-container{
+      position: absolute;
+      top:24px;
+      width: 100%;
+      .navbar-collapse{
+        margin-top:24px;
+      }
+    }
+  }
+
+
+  // Large screen
+  @media(min-width:$screen-md){
+    .navbar-brand {
+        float: left;
+        margin-right:50px;
+        padding: 12px 0 22px 0;
+        height: auto;
+        img{
+          max-width: 100%;
+          height: auto;
+        }
+    }
+  }
 }
 

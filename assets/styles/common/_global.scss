@@ -1,15 +1,38 @@
-
-
 body{
-  overflow-y: scroll;
-  .sidebar{
-    min-height: 500px !important;
-    // to be removed
+  overflow-y: scroll; // TODO: remove after content is added
+  font-weight: 300;
+
+
+
+  // Tablets
+  @media(min-width:$screen-sm){
+
+    .sidebar{font-size: 15px;}
+    .content-info{font-size: 15px;}
+    .copy-info{font-size:13px;}
+
   }
-}
+
+  // Large screens
+  @media(min-width:$screen-md){
+
+    .sidebar{font-size: 18px;}
+    .content-info{font-size: 18px;}
+    .copy-info{font-size:15px;text-align:left;}
+
+  }
+
+
+
+
 .spacer{
-  margin-top: 100px;
-  @media(max-width:$screen-sm){
+  margin-top: 20px;
+  @media(min-width:$screen-sm){
     margin-top: 50px;
   }
+  @media(min-width:$screen-md){
+    margin-top: 100px;
+  }
+}
+
 }

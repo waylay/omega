@@ -22,6 +22,6 @@
     }
   },
   "config": {
-    "devUrl": "http://omega.dev"
+    "devUrl": "http://omega.dev:8083"
   }
 }

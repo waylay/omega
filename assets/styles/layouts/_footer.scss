@@ -2,6 +2,7 @@ footer.content-info{
   background-color: #dddddd;
   color: $brand-secondary;
   padding-bottom:21px;
+  font-size: 13px;
   .widget{
     >h3{
       font-size: 20px;
@@ -22,11 +23,36 @@ footer.content-info{
     .textwidget{
       &>div{
         padding: 0;
+        span{
+          font-weight: 400;
+        }
       }
     }
   }
+
+
+  // Tablets
+  @media(min-width:$screen-sm){
+    font-size: 15px;
+  }
+
+  // Large screens
+  @media(min-width:$screen-md){
+    font-size: 18px;
+  }
+
 }
 .copy-info{
   padding-top: 11px;
   padding-bottom: 71px;
+  font-size: 12px;
+  text-align: center;
+  @media(max-width:$screen-sm){
+    .all-rights-reserved{
+      display: block;
+    }
+  }
 }
+
+
+

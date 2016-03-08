@@ -1,9 +1,16 @@
 <header class="banner" >
-<div class="container-fluid nav-container">
+<div class="nav-container">
   <div class="container">
     <nav class="navbar" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
+
+        <div class="phone-facebook">
+          <span><?php the_field('phone','options'); ?></span>
+          <a href="<?php the_field('facebook','options'); ?>" target="_blank">
+            <img class="hidden-xs" src="<?= get_stylesheet_directory_uri() ?>/dist/images/fb_icon.png" >
+          </a>
+        </div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_navigation">MENU
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>

@@ -24,18 +24,20 @@
       -moz-user-select: none;
     }
     .slider_text{
-      margin: 177px 0;
+      margin-top: 177px;
+      margin-bottom: 177px;
+      @media(min-width:$screen-lg){
+        padding-left: 100px;
+      }
       h2{
         font-weight: 600;
         font-size: 50px;
-        line-height: 1em;
         margin: 0;
         padding: 0;
       }
       h3{
         font-size: 25px;
-        padding:0 25px;
-        margin:16px 0;
+        margin:2px 0 17px;
       }
       a.btn{
         font-size: 22px;

@@ -1,10 +1,10 @@
 .btn-arrow-right,
 .btn-arrow-left {
   position: relative;
-  border-radius:0 2px 2px 0;
-  padding:0 1em !important;
-  line-height: 1.5em;
-  border:medium none;
+  border-radius: 0 0.2em 0.2em 0;
+  padding: .2em 1em 0!important;
+  line-height: 1.4em;
+  border: medium none;
 }
 
 
@@ -13,11 +13,11 @@
   /* make two squares (before and after), looking similar to the button */
   content: "";
   position: absolute;
-  top: 0.25em;
+  top: 0.2em;
   /* move it down because of rounded corners */
-  width: 1em;
+  width: 1.2em;
   /* same as height */
-  height: 1em;
+  height: 1.2em;
   /* button_inner_height / sqrt(2) */
   background: inherit;
   /* use parent background */
@@ -27,7 +27,7 @@
   /* hide left border */
   border-bottom-color: transparent;
   /* hide bottom border */
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0.2em 0 0.2em 0;
 }
 
 .btn-arrow-right:after {
