@@ -47,7 +47,7 @@ footer.content-info{
   padding-bottom: 71px;
   font-size: 12px;
   text-align: center;
-  @media(max-width:$screen-sm){
+  @media(max-width:$screen-xs-max){
     .all-rights-reserved{
       display: block;
     }

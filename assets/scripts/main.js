@@ -19,6 +19,7 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -27,10 +28,6 @@
     // Home page
     'home': {
       init: function() {
-        // JavaScript to be fired on the home page
-
-      },
-      finalize: function() {
         $('.flexslider').flexslider({
           animation: "fade",
           controlNav: false,
@@ -41,9 +38,18 @@
           },
           before: function(slider){
             $('header.banner').css('background-image', 'url(' + $(slider.slides[slider.animatingTo]).data('headerbg') + ')');
-            console.log($(slider.slides));
           }
         });
+        $('#primary_navigation').on('show.bs.collapse', function () {
+             $(this).parents('.nav-container').css( "z-index", "11" );
+        });
+
+        $('#primary_navigation').on('hidden.bs.collapse', function () {
+            $(this).parents('.nav-container').css( "z-index", "1" );
+        });
+      },
+      finalize: function() {
+
       }
     },
     // About us page, note the change from about-us to about_us.

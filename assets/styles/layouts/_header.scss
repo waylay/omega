@@ -9,14 +9,20 @@ header.banner{
   }
   .phone-facebook{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     position: absolute;
-    top:5px;
-    right:5px;
-    padding-top: 8px;
-    color: $brand-secondary;
+    right:17px;
+    top: 8px;
+    a{
+      color: #061259;
+    }
     img{
       padding-left: 13px;
+    }
+    span {
+      margin-top: 0;
+      display: block;
+      float: left;
     }
   }
   .nav-container{
@@ -28,15 +34,42 @@ header.banner{
       border-radius: 0;
       margin-bottom: 0;
       border:medium none;
+      .navbar-toggle{
+        background-color: $brand-primary;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        min-width: 78px;
+        padding: 4px 8px 1px;
+        margin-right: 15px;
+        margin-top: 28px;
+        border-radius:2px;
+        .toggle-text{
+          float:right;
+          display: block;
+        }
+        .icon-bar{
+          background-color:#fff;
+          width: 15px;
+          height: 2px;
+          margin-top: 2px;
+          &.icon-bar-first{
+            margin-top: 3px;
+          }
+        }
+
+      }
       .navbar-brand {
         float: left;
-        margin: 15px 13px;
+        margin: 13px 15px;
         padding: 0;
+        height: auto;
         img{
           width: 163px;
           height: 42px;
         }
       }
+
       .navbar-collapse{
         text-transform: uppercase;
         font-size: 18px;
@@ -56,15 +89,52 @@ header.banner{
   // Tablets
   @media(min-width:$screen-sm){
     min-height: 300px;
-    body.home &{
-      min-height: 790px;
+    @media(max-width:$screen-sm-max){
+      .nav-container{
+        .container{
+          width: 100%;
+        }
+      }
+      .phone-facebook{
+        font-size: 14px;
+        right:152px;
+        top: 33px;
+        img{
+          padding-left: 16px;
+        }
+        span {
+          margin-top: 2px;
+        }
+      }
     }
     .nav-container{
       position: absolute;
       top:24px;
       width: 100%;
-      .navbar-collapse{
-        margin-top:24px;
+      .navbar{
+        .navbar-toggle{
+          margin-right: 24px;
+          margin-top: 24px;
+          font-size: 19px;
+          min-width: 105px;
+          padding: 8px 13px 3px;
+          .icon-bar{
+            margin-top: 3px;
+            &.icon-bar-first{
+              margin-top: 5px;
+            }
+          }
+        }
+        .navbar-brand {
+          margin: 15px 0 25px 27px;
+          img{
+            width: 227px;
+            height: 58px;
+          }
+        }
+        .navbar-collapse{
+          margin-top:24px;
+        }
       }
     }
   }
@@ -72,16 +142,27 @@ header.banner{
 
   // Large screen
   @media(min-width:$screen-md){
-    .navbar-brand {
-        float: left;
-        margin-right:50px;
-        padding: 12px 0 22px 0;
-        height: auto;
-        img{
-          max-width: 100%;
-          height: auto;
-        }
+    body.home &{
+      min-height: 790px;
     }
+    .phone-facebook{
+      font-size: 14px;
+      top: 8px;
+      img{
+        padding-left: 15px;
+      }
+      span {
+        margin-top: 2px;
+      }
+    }
+    .nav-container{
+      .navbar{
+        .navbar-brand {
+          margin:13px 71px 23px 15px;
+        }
+      }
+    }
+
   }
 }
 
