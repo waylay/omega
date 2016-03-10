@@ -28,6 +28,8 @@
     // Home page
     'home': {
       init: function() {
+
+        // Homepage Slider
         $('.flexslider').flexslider({
           animation: "fade",
           controlNav: false,
@@ -40,12 +42,21 @@
             $('header.banner').css('background-image', 'url(' + $(slider.slides[slider.animatingTo]).data('headerbg') + ')');
           }
         });
+
+        // Homepage Menu - make the subnav go on top of the slider
         $('#primary_navigation').on('show.bs.collapse', function () {
              $(this).parents('.nav-container').css( "z-index", "11" );
         });
 
         $('#primary_navigation').on('hidden.bs.collapse', function () {
             $(this).parents('.nav-container').css( "z-index", "1" );
+        });
+
+        // Hompage cards - make the "more" link to slide the content up
+        $(".homecard .btn").hover(function() {
+            $(this).parents('.homecard').find('.card-content').stop().animate({'height': '120px'});
+        }, function() {
+            $(this).parents('.homecard').find('.card-content').stop().animate({'height': '1px'});
         });
       },
       finalize: function() {

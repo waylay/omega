@@ -1,7 +1,6 @@
 header.banner{
   background-size: 100% 100%;
   position: relative;
-  overflow: hidden;
   transition: background-image 1s ease-in-out;
   background-image: url('../images/default_page_bg.png');
   body.home &{
@@ -36,6 +35,9 @@ header.banner{
       border:medium none;
       .navbar-toggle{
         background-color: $brand-primary;
+        &:hover{
+          background-color: $hover-color;
+        }
         color: #fff;
         font-size: 14px;
         font-weight: 400;
@@ -143,7 +145,7 @@ header.banner{
   // Large screen
   @media(min-width:$screen-md){
     body.home &{
-      min-height: 790px;
+      min-height: 660px;
     }
     .phone-facebook{
       font-size: 14px;
@@ -163,6 +165,11 @@ header.banner{
       }
     }
 
+  }
+  @media(min-width:$screen-lg){
+    body.home &{
+      min-height: 790px;
+    }
   }
 }
 

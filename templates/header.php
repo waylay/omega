@@ -70,7 +70,7 @@
 
   </div>
 </div>
-</header>
+
 
 <?php if(is_front_page()): ?>
 
@@ -78,48 +78,61 @@
 <div class="container homecards">
 
   <div class="col-sm-3">
-    <div class="card-title"><a href="#">Business &amp; Government</a></div>
-    <div class="card-content">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta explicabo quis nostrum exercitation ullam autem vel eum iure qui voluptate.</p>
-    </div>
-    <div class="card-image">
-      <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card1.png">
-    </div>
-  </div>
-
-
-  <div class="col-sm-3">
-    <div class="card-title"><a href="#">Healthcare</a></div>
-    <div class="card-content">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta explicabo quis nostrum exercitation ullam autem vel eum iure qui voluptate.</p>
-    </div>
-    <div class="card-image">
-      <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card2.png">
+    <div class="homecard">
+      <div class="card-title"><a href="#">Business &amp; Government</a></div>
+      <div class="card-content">
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem.</p>
+      </div>
+      <div class="card-image">
+        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
+        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card1.png">
+      </div>
     </div>
   </div>
 
 
   <div class="col-sm-3">
-    <div class="card-title"><a href="#">Big White Cable</a></div>
-    <div class="card-content">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta explicabo quis nostrum exercitation ullam autem vel eum iure qui voluptate.</p>
-    </div>
-    <div class="card-image">
-      <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card3.png">
+    <div class="homecard">
+      <div class="card-title"><a href="#">Healthcare</a></div>
+      <div class="card-content">
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab.</p>
+      </div>
+      <div class="card-image">
+        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
+        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card2.png">
+      </div>
     </div>
   </div>
 
 
   <div class="col-sm-3">
-    <div class="card-title"><a href="#">Fire Monitoring</a></div>
-    <div class="card-content">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta explicabo quis nostrum exercitation ullam autem vel eum iure qui voluptate.</p>
+    <div class="homecard">
+      <div class="card-title"><a href="#">Big White Cable</a></div>
+      <div class="card-content">
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+      </div>
+      <div class="card-image">
+        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
+        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card3.png">
+      </div>
     </div>
-    <div class="card-image">
-      <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card4.png">
+  </div>
+
+
+  <div class="col-sm-3">
+    <div class="homecard">
+      <div class="card-title"><a href="#">Fire Monitoring</a></div>
+      <div class="card-content">
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+      <div class="card-image">
+        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
+        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card4.png">
+      </div>
     </div>
   </div>
 
 </div>
 
 <?php endif; ?>
+</header>

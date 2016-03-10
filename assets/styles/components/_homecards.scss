@@ -1,7 +1,22 @@
 .homecards{
-  padding: 0;
+  position: absolute;
   margin:0 auto;
+  padding: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 2;
+  overflow: hidden;
+  .col-sm-3{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
   .card-content, .card-image{
+    background-color:#fff;
+  }
+  .card-image{
     display: none;
   }
   .card-title{
@@ -10,8 +25,19 @@
     font-weight: 500;
     text-align: center;
     padding: 5px 0 2px;
+    width: 100%;
+  }
+  .card-content{
+    height: 1px;
+    padding: 0 15px;
+    p{
+      margin:0;
+      font-size: 14px;
+    }
   }
 @media (max-width: $screen-xs-max){
+  position: relative;
+  display: block;
   &, .col-sm-3{
     padding: 0;
   }
@@ -24,11 +50,63 @@
 }
 
 @media (min-width: $screen-sm) {
-
+  //background: url('../images/wide-shadow.png') bottom center no-repeat scroll;
+  padding:0 18px;
+  bottom:-134px;
+  .col-sm-3{
+    padding: 0 8px;
+  }
+  .homecard{
+    box-shadow: 0 18px 14px 2px rgba(51, 51, 51, 0.37);
+  }
+  .card-title{
+    font-size: 18px;
+    background-color:#fff;
+    border-radius: 8px 8px 0 0;
+    padding: 5px 0;
+  }
+  .card-image{
+    display: block;
+    position: relative;
+    a.btn{
+      position: absolute;
+      top: 17px;
+      left:0;
+    }
+    img{
+      max-width: 100%;
+    }
+  }
 }
 
 @media (min-width: $screen-md) {
-  position: absolute;
+  @media (max-width: $screen-md-max) {
+
+    .homecard .card-title{
+      font-size:22px;
+      padding: 6px 0;
+    }
+    .homecard .card-content{
+      padding: 0 10px;
+      p{
+        font-size: 14px;
+      }
+    }
+  }
+  bottom:0;
+  padding:0 74px;
+  .col-sm-3{
+    padding: 0 13px;
+  }
+  .card-title{
+    font-size:26px;
+    padding: 6px 0;
+  }
+  .card-content{
+    p{
+      font-size: 16px;
+    }
+  }
 }
 
 

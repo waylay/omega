@@ -39,10 +39,11 @@
     }
 
     @media(min-width:$screen-sm){
+      padding-top:120px;
       font-size: 18px;
       line-height: 30px;
       h1{
-        margin:50px 0 22px;
+        margin:42px 0 22px;
         font-size: 35px;
         text-align: center;
       }
@@ -52,9 +53,11 @@
     }
 
     @media(min-width:$screen-md){
+      padding-top:0;
       font-size: 20px;
       line-height:35px;
       h1{
+        margin:50px 0 22px;
         font-size: 47px;
       }
       img{
