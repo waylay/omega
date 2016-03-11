@@ -1,9 +1,6 @@
-// Home Page
-
 .page{
   .content{
     position: relative;
-    min-height: 800px;
   }
   .page-header{
     padding:0;
@@ -21,7 +18,7 @@
       margin-left: -16px;
       margin-right: -16px;
     }
-    .main{
+    .main, [class*="col-"]{
       padding-left: 16px;
       padding-right: 16px;
     }
@@ -67,9 +64,6 @@
         }
 
     }
-
-
-
 
 
     // Large screens

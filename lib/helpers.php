@@ -4,7 +4,6 @@ function dd($value)
   echo "<pre style='position:fixed'>";
   print_r($value);
   echo "</pre>";
-  exit(0);
 
 }
 

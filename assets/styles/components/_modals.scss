@@ -5,6 +5,7 @@ body{
     border-radius: 0;
     .modal-dialog{
       max-width: 100%;
+      margin:30px auto 0;
       .modal-content{
         font-size: 15px;
         border:medium none;
@@ -53,6 +54,12 @@ body{
         .modal-header{
           h3{
             font-size: 40px;
+          }
+        }
+        .modal-body{
+          .modal-profilepicture{
+            width: 165px;
+            height: 287px;
           }
         }
       }
