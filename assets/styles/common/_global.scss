@@ -1,15 +1,35 @@
 body{
   overflow-y: scroll; // TODO: remove after content is added
   font-weight: 300;
+  .breadcrumbs{
+    font-size: 15px;
+    line-height: 2em;
+    span.breadcrumbs-arrows{
+      color: $brand-primary;
+      font-size: 20px;
+    }
+  }
 
-
-
+  h1, h2, h3{
+    margin-top:0;
+    font-weight: 300;
+  }
+  p,ul{
+    margin-bottom: 1.3em;
+    line-height: 1.7em;
+  }
+  ul{
+    padding-left: 2em;
+  }
+  img{
+    max-width: 100%;
+    height: auto;
+  }
   // Tablets
   @media(min-width:$screen-sm){
 
     .sidebar{font-size: 15px;}
-    .content-info{font-size: 15px;}
-    .copy-info{font-size:13px;}
+
 
   }
 
@@ -17,8 +37,6 @@ body{
   @media(min-width:$screen-md){
 
     .sidebar{font-size: 18px;}
-    .content-info{font-size: 18px;}
-    .copy-info{font-size:15px;text-align:left;}
 
   }
 
@@ -33,6 +51,9 @@ body{
   @media(min-width:$screen-md){
     margin-top: 100px;
   }
+}
+.clear {
+    clear: both;
 }
 
 }

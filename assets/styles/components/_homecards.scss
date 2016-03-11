@@ -38,8 +38,9 @@
 @media (max-width: $screen-xs-max){
   position: relative;
   display: block;
+
   &, .col-sm-3{
-    padding: 0;
+    padding: 0 !important;
   }
   .card-title{
     background-color: $brand-primary;
@@ -94,7 +95,7 @@
     }
   }
   bottom:0;
-  padding:0 74px;
+  padding:0 74px !important;
   .col-sm-3{
     padding: 0 13px;
   }

@@ -66,3 +66,9 @@
     background-color: $hover-color;
   }
 }
+
+.more{
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-arrow-right;
+}

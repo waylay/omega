@@ -1,5 +1,5 @@
 header.banner{
-  background-size: 100% 100%;
+  background-size: cover;
   position: relative;
   transition: background-image 1s ease-in-out;
   background-image: url('../images/default_page_bg.png');
@@ -84,13 +84,24 @@ header.banner{
           }
         }
       }
+
+
+    }
+  }
+  .parent-page-title{
+    padding:102px 0 0;
+    h1{
+      color: #fff;
+      font-size:30px;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 0 0 15px 16px;
     }
   }
 
-
   // Tablets
   @media(min-width:$screen-sm){
-    min-height: 300px;
+    min-height: 275px;
     @media(max-width:$screen-sm-max){
       .nav-container{
         .container{
@@ -139,6 +150,14 @@ header.banner{
         }
       }
     }
+    .parent-page-title{
+      padding-top:50px;
+      h1{
+        color: #fff;
+        font-size:30px;
+        font-weight: 400;
+      }
+    }
   }
 
 
@@ -166,6 +185,7 @@ header.banner{
     }
 
   }
+
   @media(min-width:$screen-lg){
     body.home &{
       min-height: 790px;

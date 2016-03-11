@@ -1,10 +1,24 @@
 // Grid system
-.main {
-  @include make-sm-column($main-sm-columns);
-  .sidebar-primary & {
-    @include make-sm-column($main-sm-columns - $sidebar-sm-columns);
+
+@media (min-width: $screen-sm) {
+
+  .sidebar-primary{ //page has sidebar
+    .main{
+      padding:0 24px;
+      float: left;
+      margin: 0 -284px 0 0;
+      width: 100%;
+      .content{
+        margin: 0 332px 0 0;
+      }
+    }
+    .sidebar{
+      padding: 0 24px;
+      float: right;
+      overflow: hidden;
+      width: 284px;
+    }
+
   }
-}
-.sidebar {
-  @include make-sm-column($sidebar-sm-columns);
+
 }
