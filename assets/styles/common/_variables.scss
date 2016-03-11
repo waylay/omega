@@ -54,9 +54,9 @@ $grid-gutter-width:       48px;
 $screen-md:               992px;
 $grid-float-breakpoint:   $screen-md+1;
 
-
-// Buttons
-
+$border-radius-base:        0px;
+$border-radius-large:       0px;
+$border-radius-small:       0px;
 
 // Nav
 
@@ -65,3 +65,28 @@ $nav-link-hover-bg: transparent;
 
 
 $component-active-color:    $brand-primary;
+
+//== Modals
+//
+//##
+
+//** Padding applied to the modal body
+$modal-inner-padding:         12px 26px 34px 48px;
+
+//** Padding applied to the modal title
+$modal-title-padding:         51px 0 24px 48px;
+
+$modal-md:                    661px;
+
+
+//** Modal backdrop background color
+$modal-backdrop-bg:           #000 !default;
+//** Modal backdrop opacity
+$modal-backdrop-opacity:      0 !default;
+//** Modal header border color
+$modal-header-border-color:   #e5e5e5 !default;
+//** Modal footer border color
+$modal-footer-border-color:   $modal-header-border-color !default;
+
+
+

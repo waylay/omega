@@ -150,87 +150,78 @@ function page_header_area()
 
 
 function breadcrumbs_and_search(){
-  if(!is_front_page()){
-?>
-<div class="container hidden-xs">
-<div class="row">
-  <div class="col-sm-7">
-    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-        <?php if(function_exists('bcn_display'))
-        {
-            bcn_display();
-        }?>
+  if(!is_front_page()){ ?>
+<div class="hidden-xs breadcrumbs_and_search">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+          <?php if(function_exists('bcn_display'))
+          {
+              bcn_display();
+          }?>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+        <label>
+            <span class="screen-reader-text"><?php echo _x( 'Search Products:', 'label' ) ?></span>
+            <input type="search" class="search-field"
+                placeholder="<?php echo esc_attr_x( 'Search Products', 'placeholder' ) ?>"
+                value="<?php echo get_search_query() ?>" name="s"
+                title="<?php echo esc_attr_x( 'Search Products', 'label' ) ?>" />
+        </label>
+
+      </form>
     </div>
   </div>
-  <div class="col-sm-5">
-    <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-      <label>
-          <span class="screen-reader-text"><?php echo _x( 'Search Products:', 'label' ) ?></span>
-          <input type="search" class="search-field"
-              placeholder="<?php echo esc_attr_x( 'Search Products', 'placeholder' ) ?>"
-              value="<?php echo get_search_query() ?>" name="s"
-              title="<?php echo esc_attr_x( 'Search Products', 'label' ) ?>" />
-      </label>
-
-    </form>
-  </div>
 </div>
 </div>
-
-<?php
-  } //endif
+<?php } //endif
 }
 
 
 function expandable_products_list()
 {
-  ?>
-  <div id="listContainer">
-    <ul id="expList">
-        <li>
-            Item A
-            <ul>
-                <li>
-                    Item A.1
-                    <ul>
-                        <li>
-                            <span>Link</span>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Item A.2
-                </li>
-                <li>
-                    Item A.3
-                    <ul>
-                        <li>
-                            <span>Link</span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li>
-            Item B
-        </li>
-        <li>
-            Item C
-            <ul>
-                <li>
-                    Item C.1
-                </li>
-                <li>
-                    Item C.2
-                    <ul>
-                        <li>
-                            <span>Link.</span>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-  </div>
-  <?php
+
+$args = array(
+  'taxonomy'     => 'product_category',
+  'orderby'      => 'name',
+  'show_count'   => 0,
+  'pad_counts'   => 0,
+  'hierarchical' => 1,
+  'title_li'     => '',
+  'hide_empty'   => 0
+);
+?>
+<div id="listContainer">
+  <h3>Product Categories</h3>
+  <ul id="expList">
+    <?php wp_list_categories( $args ); ?>
+  </ul>
+</div>
+   <?php
+}
+
+function sidebar_list_child_pages() {
+  if (is_page_template( 'template-b1-common.php' ) ||
+      is_page_template( 'template-b2-common.php' )) {
+    global $post;
+    if ( is_page() ){
+      if ($post->post_parent) {
+        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+        $parent_title = get_the_title($post->post_parent);
+      }else{
+        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+        $parent_title = get_the_title($post->ID);
+      }
+    }
+
+    if (isset($childpages )) {
+      $string = '<section class="widget sub_pages"><h3>'.$parent_title.'</h3><ul>' . $childpages . '</ul></section>';
+      echo $string;
+    }
+  }
+
+
 }

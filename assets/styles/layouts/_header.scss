@@ -125,6 +125,12 @@ header.banner{
       top:24px;
       width: 100%;
       .navbar{
+        @media (min-width: $screen-sm) {
+          body:not(.home) &{
+            z-index: 2;
+          }
+        }
+        background-color:#fff;
         .navbar-toggle{
           margin-right: 24px;
           margin-top: 24px;
@@ -147,15 +153,15 @@ header.banner{
         }
         .navbar-collapse{
           margin-top:24px;
+
         }
       }
     }
     .parent-page-title{
-      padding-top:50px;
+      padding-top:223px;
       h1{
-        color: #fff;
-        font-size:30px;
-        font-weight: 400;
+        font-size:50px;
+        margin: 0 0 2px 24px;
       }
     }
   }
@@ -163,6 +169,7 @@ header.banner{
 
   // Large screen
   @media(min-width:$screen-md){
+    min-height: 300px;
     body.home &{
       min-height: 660px;
     }

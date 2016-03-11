@@ -1,9 +1,13 @@
 // Home Page
 
 .page{
+  .content{
+    position: relative;
+    min-height: 800px;
+  }
   .page-header{
     padding:0;
-    margin:26px 0 0;
+    margin:24px 0 0;
     border-bottom: medium none;
   }
 
@@ -30,10 +34,17 @@
       font-size: 20px;
       font-weight: 300;
     }
+    h2{
+      font-size: 18px;
+      font-weight: 300;
+    }
+    h3{
+      font-size: 16px;
+      font-weight: 300;
+    }
 
     .more{
       display: table;
-      font-size: 13px;
     }
     // Tablets
     @media(min-width:$screen-sm){
@@ -43,12 +54,16 @@
         font-size: 18px;
 
         h1{
+          font-size: 30px;
+        }
+        h2{
           font-size: 25px;
         }
-
+        h3{
+          font-size: 20px;
+        }
         .more{
           display: inline-block;
-          font-size: 14px;
         }
 
     }
@@ -59,6 +74,9 @@
 
     // Large screens
     @media(min-width:$screen-md){
+      .content{
+        padding-left:24px;
+      }
       font-size: 20px;
       h1{
         font-size: 30px;

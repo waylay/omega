@@ -72,3 +72,16 @@
   @extend .btn-primary;
   @extend .btn-arrow-right;
 }
+
+.sidebar .current_page_item{
+  padding-left: 0;
+  a{
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-arrow-left;
+    color: #fff;
+    padding-left:0.9em !important;
+    font-weight: 300;
+    font-size: 16px;
+  }
+}

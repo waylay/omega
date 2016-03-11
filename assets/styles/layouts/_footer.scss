@@ -4,6 +4,18 @@ footer.content-info{
   padding-top: 17px;
   padding-bottom:21px;
   font-size: 13px;
+  .container{
+    position: relative;
+    .facebook-footer{
+      img{
+        padding: 12px 0;
+      }
+      margin-left: 24px;
+      @media(max-width:$screen-xs-max){
+        margin-left: 50%;;
+      }
+    }
+  }
   h3{
     font-size: 14px;
     text-transform: uppercase;
@@ -11,6 +23,7 @@ footer.content-info{
     font-weight: 400;
   }
   .widget{
+    overflow: hidden;
     ul{
       clear: both;
       overflow: hidden;
@@ -44,6 +57,14 @@ footer.content-info{
 
   // Large screens
   @media(min-width:$screen-md){
+    .container{
+      .facebook-footer{
+        position: absolute;
+        top:24px;
+        right: 0;
+        margin-right: 24px;
+      }
+    }
     padding-top: 26px;
     font-size: 17px;
     h3{

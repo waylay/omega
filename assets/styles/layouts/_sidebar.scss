@@ -1,1 +1,22 @@
-
+.sidebar{
+  ul,li{
+    list-style: none;
+    padding-left:0.9em;
+    line-height: 2em;
+  }
+  h3{
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #202020;
+  }
+  a{
+    color: #212121;
+    &:hover{
+        color: $brand-primary;
+    }
+  }
+  padding: 0 24px 40px;
+  section{
+    margin-top: 36px;
+  }
+}

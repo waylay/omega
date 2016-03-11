@@ -19,6 +19,8 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
+        // Sidebar expand list
         $('#expList').find('li:has(ul)')
           .click( function(event) {
               if (this === event.target) {
@@ -30,23 +32,14 @@
           .addClass('collapsed')
           .children('ul').hide();
 
-          //Create the button funtionality
-          $('#expandList')
-          .unbind('click')
-          .click( function() {
-              $('.collapsed').addClass('expanded');
-              $('.collapsed').children().show('medium');
-          });
-          $('#collapseList')
-          .unbind('click')
-          .click( function() {
-              $('.collapsed').removeClass('expanded');
-              $('.collapsed').children().hide('medium');
-          });
+
+
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
-
+         $('.current-cat-parent').toggleClass('expanded').children('ul').show();
+         $('.current-cat-parent').parents('.collapsed').toggleClass('expanded').children('ul').show();
       }
     },
     // Home page

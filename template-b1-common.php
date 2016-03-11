@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Common Template
+ * Template Name: B1 Common Template
  */
 ?>
 

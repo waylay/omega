@@ -4,6 +4,10 @@
 <?php
       dynamic_sidebar('sidebar-footer');
 ?>
+      <a class="facebook-footer" href="<?php the_field('facebook','options'); ?>" target="_blank">
+        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/fb_icon.png" >
+      </a>
+
     </div>
   </div>
 </footer>
