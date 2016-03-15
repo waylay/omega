@@ -118,8 +118,7 @@ function front_page_cards()
 }
 
 
-function page_header_area()
-{
+function page_header_area(){
 
   $parent_title = '';
   /* is it a page */
@@ -203,9 +202,9 @@ $args = array(
 }
 
 function sidebar_list_child_pages() {
-  if (is_page_template( 'template-b1-common.php' ) ||
-      is_page_template( 'template-b2-common.php' )) {
-    global $post;
+
+  global $post;
+  if (is_page_template( 'template-b1-common.php' ) || is_page_template( 'template-b2-team.php' )) {
     if ( is_page() ){
       if ($post->post_parent) {
         $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
@@ -224,3 +223,49 @@ function sidebar_list_child_pages() {
 
 
 }
+
+
+function initiate_masonry_on_solutions_page() {
+  if ( is_page_template( 'template-c1-solutions.php' ) ) {
+?>
+<script type="text/javascript">
+(function($) {
+   $('.grid').masonry({
+    // options...
+    columnWidth: 263,
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    gutter: 4
+
+  });
+})(jQuery);
+</script>
+<?php
+  }
+}
+add_action( 'wp_footer', 'initiate_masonry_on_solutions_page',99 );
+
+
+
+// Adds .current_page_parent to Custom Post Type and removes it from default "Blog"
+function wpdev_nav_classes( $classes, $item ) {
+    if( is_post_type_archive( 'product' ) || is_singular( 'product' ) || is_tax('product_category') ){
+      if($item->title == 'Blog'){
+        $classes = array_diff( $classes, array( 'current_page_parent' ) );
+      }
+      if($item->title == 'Products'){
+        $classes[] = 'current_page_parent';
+      }
+
+    }
+
+    if( is_page() ){
+      if($item->title == 'Solutions' && is_page_template( 'template-c2-solutions-pages.php' )){
+        $classes[] = 'current_page_parent';
+      }
+
+    }
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'wpdev_nav_classes', 10, 2 );

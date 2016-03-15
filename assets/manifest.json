@@ -4,7 +4,10 @@
       "files": [
         "scripts/main.js"
       ],
-      "main": true
+      "main": true,
+      "exclude": {
+        "bower": ["outlayer"]
+      }
     },
     "main.css": {
       "files": [

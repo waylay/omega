@@ -1,0 +1,70 @@
+.solutions{
+
+  .grid-item {
+    margin-bottom: 4px;
+  }
+
+  .grid-item-title{
+    height: 36px;
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+    background-color:#f0a122;
+    padding-left:10px;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+  .overlay {
+    width: 100%;
+    height: calc(100% - 35px);
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    color: #fff;
+    display: none;
+
+  }
+  .overlay .overlay-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 0 19px;
+    color: #fff;
+    &, p{
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22.72px;
+      margin: 0;
+    }
+
+  }
+  .overlay .overlay-title {
+    border-top: 1px solid #fff;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    padding-top:10px;
+    margin-top: 5px;
+    span{
+      padding: 7px;
+      margin-left: 5px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center 43%;
+      background-image: url('../images/slider_right.png');
+
+    }
+    &:hover span{
+      background-image: url('../images/slider_right_hover.png');
+    }
+  }
+  .grid-item:hover .overlay {
+    display: block;
+  }
+}

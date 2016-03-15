@@ -33,11 +33,14 @@
           .children('ul').hide();
 
 
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
          $('.current-cat-parent').toggleClass('expanded').children('ul').show();
          $('.current-cat-parent').parents('.collapsed').toggleClass('expanded').children('ul').show();
+
+
       }
     },
     // Home page

@@ -1,16 +1,17 @@
 body{
-
   .modal{
-    position: absolute;
-    border-radius: 0;
+
     .modal-dialog{
-      max-width: 100%;
-      margin:30px auto 0;
+      max-width: 93%;
+      margin:80px auto 30px;
+      border: 2px solid $brand-secondary;
       .modal-content{
         font-size: 15px;
         border:medium none;
         box-shadow: none;
         .modal-header{
+          background-color: $brand-secondary;
+          padding: 17px 0 8px 21px;
           button.close{
             width: 29px;
             height: 29px;
@@ -28,9 +29,22 @@ body{
             font-size: 30px;
             font-weight: 300;
           }
-          background-color: #061259;
+
+        }
+        .modal-body{
+          padding: 0 10px 0px 21px;
+          h5{
+            color: $text-color;
+            font-size: 17px;
+          }
+          hr{
+            margin-top:0;
+            margin-bottom:7px;
+            border-color: #999;
+          }
         }
         .modal-footer{
+          padding: 0 10px 27px 21px;
           text-align: left;
           border-top: medium none;
           a{
@@ -49,17 +63,29 @@ body{
   @media(min-width:$screen-sm){
   .modal{
     .modal-dialog{
+      border: 3px solid $brand-secondary;
       .modal-content{
         font-size: 17px;
         .modal-header{
+          padding: 35px 0 5px 48px;
           h3{
             font-size: 40px;
           }
         }
         .modal-body{
+          padding: 0 26px 17px 48px;
+          h5{
+            font-size: 20px;
+          }
           .modal-profilepicture{
             width: 165px;
             height: 287px;
+          }
+        }
+        .modal-footer{
+          padding: 0 10px 48px 48px;
+          a{
+            font-size: 22px;
           }
         }
       }
@@ -70,7 +96,9 @@ body{
 
   // Large screens
   @media(min-width:$screen-md){
-
-
+    .modal{
+      right:284px; // sidebar width
+    }
   }
+
 }
