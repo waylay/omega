@@ -1,0 +1,142 @@
+.tax-product_category, .tax-manufacturer{
+  .page-header{
+    display: none;
+  }
+  .view-details-download{
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    a.btn{
+      width: 51%;
+      min-width: 105px;
+      max-width: 100%;
+      padding: 4px 0 2px;
+      font-weight: 400;
+      font-size: 13px;
+      &.btn-primary{
+        margin-top: 30%;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .content .row{
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  article{
+    border:2px solid #fff;
+    padding: 10px 5px 0;
+    &:nth-child(odd){
+      clear: both;
+    }
+    header{
+      text-align: center;
+      position: relative;
+    }
+    &:hover{
+      border:2px solid $brand-primary;
+      .view-details-download{
+        display: block;
+      }
+    }
+  }
+  h3.entry-title{
+    color: #1f1f1f;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3em;
+    text-align: center;
+  }
+  .modal .modal-dialog{
+    .modal-content .modal-header h3{
+      font-size: 22px;
+      padding-right:40px;
+    }
+    h5{
+      font-weight: 300;
+      line-height: 1.6em;
+      span{
+        font-weight: 400;
+      }
+    }
+    .wp-post-image{
+      display: block;
+      margin:10px auto 30px;
+    }
+    a.btn{
+      font-weight: 700;
+      text-transform: uppercase;
+      margin:5px 0;
+      clear: both;
+    }
+
+  }
+  @media (min-width: $screen-sm) {
+    .content .row{
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+    article{
+      &:nth-child(odd){
+        clear: none;
+      }
+      &:nth-child(3n+1){
+        clear: both;
+      }
+    }
+    .modal .modal-dialog{
+      .modal-content .modal-header h3{
+        font-size: 32px;
+      }
+      .modal-content .modal-footer{
+        padding: 0 0 16px 0;
+      }
+      .wp-post-image{
+        margin:50px auto 50px;
+      }
+      a.btn{
+        font-size: 18px;
+        margin:7px 0;
+      }
+    }
+  }
+  @media (min-width: $screen-md) {
+    .page-header{
+      display: block;
+    }
+    article{
+      &:nth-child(3n+1){
+        clear: none;
+      }
+      &:nth-child(4n+1){
+        clear: both;
+      }
+    }
+    .modal .modal-dialog{
+      .modal-content .modal-header h3{
+        font-size: 35px;
+      }
+      h5{
+        font-size: 20px;
+        line-height: 1.7em;
+      }
+      .modal-content .modal-body hr{
+        margin-bottom: 14px;
+      }
+      .modal-content .modal-footer{
+        padding: 0 0 16px 0;
+      }
+      .wp-post-image{
+        margin:60px auto 60px;
+      }
+      a.btn{
+        font-size: 21px;
+        margin:8px 0;
+        min-width: 75%;
+        text-align: left;
+      }
+    }
+  }
+}

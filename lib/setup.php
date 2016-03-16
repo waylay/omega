@@ -47,6 +47,11 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
+  add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
+
+  // Product thumbnails
+  add_image_size( 'product-thumbnail', 150, 200, true ); // (cropped)
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 

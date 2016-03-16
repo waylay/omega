@@ -26,7 +26,7 @@ global $post;
 
       if ( has_post_thumbnail() ): ?>
       <article class="grid-item">
-        <?php the_post_thumbnail('full',array( 'class' => 'hidden-md' )); ?>
+        <?php the_post_thumbnail('full',array( 'class' => 'hidden-xs hidden-sm' )); ?>
 
         <a class="overlay" href="<?php the_permalink(); ?>">
           <div class="overlay-description">

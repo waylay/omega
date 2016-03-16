@@ -25,8 +25,9 @@
     left: 0;
     text-decoration: none;
     color: #fff;
-    display: none;
-
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
   }
   .overlay .overlay-description {
     position: absolute;
@@ -64,7 +65,29 @@
       background-image: url('../images/slider_right_hover.png');
     }
   }
-  .grid-item:hover .overlay {
-    display: block;
+
+  @media (max-width: $screen-sm-max) {
+    article{
+      width: 100% !important;
+    }
+    .grid-item-title:hover{
+      background-color:#000 !important;
+      &:after{
+        content: '»';
+        color: #fff;
+        position: absolute;
+        right: 4%;
+        font-size: 40px;
+        top: 0;
+        line-height: 38px;
+        font-weight: 300;
+      }
+    }
+  }
+  @media (min-width: $screen-md) {
+    .grid-item:hover .overlay {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }

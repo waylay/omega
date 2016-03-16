@@ -32,11 +32,13 @@ ul#expList>li{
 #expList li {
     line-height:180%;
     text-indent:0px;
-    background-position: 1px 8px;
+    background-position: 6px 9px;
     padding-left: 20px;
     background-repeat: no-repeat;
 }
-
+#expList li.current-cat a{
+  color: $brand-primary;
+}
 /* Collapsed state for list element */
 #expList .collapsed {
     background-image: url('../images/collapsed.png');
@@ -45,6 +47,7 @@ ul#expList>li{
 /* NOTE: This class must be located UNDER the collapsed one */
 #expList .expanded {
     background-image: url('../images/expanded.png');
+    background-position: 8px 12px;
 }
 #expList {
     clear: both;

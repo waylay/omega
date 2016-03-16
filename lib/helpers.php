@@ -136,7 +136,9 @@ function page_header_area(){
   if( is_single() || is_category() ){
     $parent_title = get_the_title( get_option('page_for_posts', true));
   }
-
+  if( is_tax('product_category') || is_archive('product')){
+    $parent_title = 'Products';
+  }
   if('' != $parent_title): ?>
     <div class="container parent-page-title">
       <h1><?= $parent_title; ?></h1>
@@ -151,28 +153,21 @@ function breadcrumbs_and_search(){
   if(!is_front_page()){ ?>
 <div class="hidden-xs breadcrumbs_and_search">
 <div class="container">
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-          <?php if(function_exists('bcn_display'))
-          {
-              bcn_display();
-          }?>
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-        <label>
-            <span class="screen-reader-text"><?php echo _x( 'Search Products:', 'label' ) ?></span>
-            <input type="search" class="search-field"
-                placeholder="<?php echo esc_attr_x( 'Search Products', 'placeholder' ) ?>"
-                value="<?php echo get_search_query() ?>" name="s"
-                title="<?php echo esc_attr_x( 'Search Products', 'label' ) ?>" />
-        </label>
-
-      </form>
-    </div>
+  <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+    <?php if(function_exists('bcn_display'))
+    {
+        bcn_display();
+    }?>
   </div>
+  <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+    <label>
+        <span class="screen-reader-text"><?php echo _x( 'Search Products:', 'label' ) ?></span>
+        <input type="search" class="search-field"
+            placeholder="<?php echo esc_attr_x( 'Search Products', 'placeholder' ) ?>"
+            value="<?php echo get_search_query() ?>" name="s"
+            title="<?php echo esc_attr_x( 'Search Products', 'label' ) ?>" />
+    </label>
+  </form>
 </div>
 </div>
 <?php } //endif
@@ -248,7 +243,7 @@ add_action( 'wp_footer', 'initiate_masonry_on_solutions_page',99 );
 
 
 // Adds .current_page_parent to Custom Post Type and removes it from default "Blog"
-function wpdev_nav_classes( $classes, $item ) {
+function omega_nav_classes( $classes, $item ) {
     if( is_post_type_archive( 'product' ) || is_singular( 'product' ) || is_tax('product_category') ){
       if($item->title == 'Blog'){
         $classes = array_diff( $classes, array( 'current_page_parent' ) );
@@ -268,4 +263,28 @@ function wpdev_nav_classes( $classes, $item ) {
 
     return $classes;
 }
-add_filter( 'nav_menu_css_class', 'wpdev_nav_classes', 10, 2 );
+add_filter( 'nav_menu_css_class', 'omega_nav_classes', 10, 2 );
+
+
+function omega_custom_pagination_links() {
+    global $wp_query;
+    $big = 99999; // need an unlikely integer
+    $pages = paginate_links( array(
+            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+            'format' => '?paged=%#%',
+            'current' => max( 1, get_query_var('paged') ),
+            'total' => $wp_query->max_num_pages,
+            'type'  => 'array',
+            'prev_next'   => true,
+      'prev_text'    => __('&laquo; previous page'),
+      'next_text'    => __('next page &raquo;'),
+        ) );
+        if( is_array( $pages ) ) {
+            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+            echo '<ul class="pagination">';
+            foreach ( $pages as $page ) {
+                    echo "<li>$page</li>";
+            }
+           echo '</ul>';
+        }
+}

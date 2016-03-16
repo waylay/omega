@@ -19,7 +19,10 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-
+        $('.dropdown a.dropdown-toggle').click( function(event) {
+            if($(this).parent().hasClass('open'))
+                location.assign($(this).attr('href'));
+        });
         // Sidebar expand list
         $('#expList').find('li:has(ul)')
           .click( function(event) {
@@ -27,7 +30,9 @@
                   $(this).toggleClass('expanded');
                   $(this).children('ul').toggle('medium');
               }
-              return false;
+              if(!$(this).hasClass('expanded')){
+                //return false;
+              }
           })
           .addClass('collapsed')
           .children('ul').hide();
