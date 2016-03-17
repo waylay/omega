@@ -288,3 +288,81 @@ function omega_custom_pagination_links() {
            echo '</ul>';
         }
 }
+
+function we_should_display_the_sharing_icons(){
+  if(is_front_page()){
+    return false;
+  }
+
+  if(is_tax('product_category' )){
+    return false;
+  }
+
+  return true;
+}
+
+// inserts a hidden field in a CF7 form with product name
+function cf7_add_product_name(){
+  if(isset($_GET['product_id'])){
+
+    $product_id = intval( esc_attr($_GET['product_id']));
+    if($product_id==0){ return false; }
+
+    $product_name = get_the_title($product_id);
+
+    return $product_name;
+  }
+  return false;
+}
+
+add_shortcode('CF7_ADD_PRODUCT_NAME', 'cf7_add_product_name');
+
+
+// inserts a hidden field in a CF7 form with product manufacturer
+function cf7_add_product_manufacturer(){
+
+  if(isset($_GET['product_id'])){
+
+    $product_id = intval( esc_attr($_GET['product_id']));
+    if($product_id == 0){ return false; }
+
+    $product_manufacturer = strip_tags( get_the_term_list( $product_id, 'manufacturer', '', ' / ' ) );
+
+    return $product_manufacturer;
+  }
+  return false;
+
+}
+
+add_shortcode('CF7_ADD_PRODUCT_MANUFACTURER', 'cf7_add_product_manufacturer');
+
+
+// Displays a box with the selected product for which one is requesting more info
+function cf7_display_product_box(){
+  if(isset($_GET['product_id'])){
+
+    $product_id = intval( esc_attr($_GET['product_id']));
+    if($product_id == 0){ return false; }
+
+    $product_name = get_the_title($product_id);
+    $product_manufacturer = strip_tags( get_the_term_list( $product_id, 'manufacturer', '', ' / ' ) );
+    $product_image = get_the_post_thumbnail( $product_id, 'thumbnail' );
+
+    $box = '<div class="wpcf7 product-box form-group form-control">';
+      $box .= '<div class="row">';
+        $box .= '<div class="col-sm-4">';
+          $box .= $product_image;
+        $box .= '</div>';
+        $box .= '<div class="col-sm-8">';
+          $box .= '<p><strong>Product: </strong>'.$product_name.'</p>';
+          $box .= '<p><strong>Manufacturer: </strong>'.$product_manufacturer.'</p>';
+        $box .= '</div>';
+      $box .= '</div>';
+    $box .= '</div>';
+
+    return $box;
+  }
+  return false;
+}
+
+add_shortcode('display_product_box', 'cf7_display_product_box');

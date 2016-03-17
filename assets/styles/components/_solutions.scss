@@ -45,6 +45,7 @@
     }
 
   }
+
   .overlay .overlay-title {
     border-top: 1px solid #fff;
     color: #fff;
@@ -88,6 +89,78 @@
     .grid-item:hover .overlay {
       visibility: visible;
       opacity: 1;
+    }
+  }
+}
+
+.featured-project{
+  font-size: 16px;
+  margin-bottom: 10px;
+  img{
+    margin-bottom: 17px;
+  }
+  h3{
+    color: #00468c;
+  }
+
+  h5{
+    color: #1f1f1f;
+    margin:5px 0;
+  }
+  a.btn{
+    font-size: 13px;
+    margin:5px 0;
+  }
+  @media (max-width: $screen-sm-max) {
+    font-size: 15px;
+    line-height: 1.4em;
+    .col-sm-7{
+      padding-left: 0;
+    }
+  }
+}
+
+.related-products-container{
+  strong{
+    color: #1f1f1f;
+  }
+  ul{
+    list-style: none;
+    line-height: 2em;
+    @media (min-width: $screen-md) {
+      font-size: 17px;
+    }
+    li{
+      padding-left: 5px;
+    }
+  }
+  .related_product_categories{
+    list-style-image: url('../images/related_category.png');
+  }
+  .related_products{
+    list-style-image: url('../images/related_product.png');
+  }
+}
+.page .main .related-questions{
+  border:1px solid #999;
+  padding: 11px 16px 16px;
+  h2{
+    font-weight: 600;
+    color: #1f1f1f;
+    margin-bottom: 5px;
+  }
+  p{
+    font-size: 18px;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+    @media (min-width: $screen-md) {
+      font-size: 22px;
+    }
+  }
+  a.btn{
+    font-size: 16px;
+    @media (min-width: $screen-md) {
+      font-size: 20px;
     }
   }
 }

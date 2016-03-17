@@ -28,7 +28,7 @@
               wp_nav_menu(array(
                   'menu'              => 'primary_navigation',
                   'theme_location'    => 'primary_navigation',
-                  'depth'             => 2,
+                  'depth'             => 4,
                   'container'         => 'div',
                   'container_class'   => 'collapse navbar-collapse',
                   'container_id'      => 'primary_navigation',

@@ -18,7 +18,6 @@ body{
     font-weight: 300;
   }
   p,ul{
-    margin-bottom: 1.3em;
     line-height: 1.7em;
   }
   ul{
@@ -31,7 +30,14 @@ body{
   em{
     font-family: serif;
   }
-
+  strong{
+    font-weight: 400;
+  }
+  hr {
+    margin-top: 7px;
+    margin-bottom: 17px;
+    border-top: 1px solid #999;
+  }
   // Tablets
   @media(min-width:$screen-sm){
 
@@ -50,17 +56,49 @@ body{
 
 
 
-.spacer{
-  margin-top: 20px;
-  @media(min-width:$screen-sm){
-    margin-top: 50px;
+  .spacer{
+    margin-top: 20px;
+    @media(min-width:$screen-sm){
+      margin-top: 50px;
+    }
+    @media(min-width:$screen-md){
+      margin-top: 100px;
+    }
   }
-  @media(min-width:$screen-md){
-    margin-top: 100px;
+  .clear {
+      clear: both;
   }
-}
-.clear {
-    clear: both;
-}
+
+  .share-icons{
+    padding-bottom: 27px;
+    @media (min-width: $screen-md) {
+      padding-left: 24px;
+    }
+    span{
+      line-height: 26px;
+      font-size: 16px;
+      display: block;
+      float: left;
+      padding-right: 2px;
+    }
+    .addtoany_list a{
+      padding: 0 2px;
+    }
+    .addtoany_list.a2a_kit_size_32 a > span {
+      border-radius: 4px;
+      display: inline-block;
+      height: 25px;
+      line-height: 25px;
+      opacity: 1;
+      width: 25px;
+      background-size: 25px;
+      background-position: center;
+    }
+    a.addtoany_share_save img{
+      width: 25px;
+      height: 25px;
+    }
+
+  }
 
 }

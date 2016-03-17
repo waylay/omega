@@ -9,7 +9,7 @@
   <div class="entry-summary">
     <h3 class="entry-title"><?php the_title(); ?></h3>
   </div>
-      <!-- Modal -->
+    <!-- Modal -->
     <div class="modal modal-md fade" id="<?= $post->post_name; ?>" tabindex="-1" role="dialog" aria-labelledby="<?= $post->post_name.'Label'; ?>">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -27,14 +27,12 @@
                 <h5><span>Manufacturer: </span><?php  echo strip_tags( get_the_term_list( $post->ID, 'manufacturer', '', ' / ' ) ); ?></h5>
                 <hr/>
                 <?php the_content(); ?>
-                <div><a href="#" class="btn btn-primary btn-arrow-right">Request more info</a></div>
-                <div><a href="<?php the_field('product_pdf'); ?>" class="btn btn-secondary btn-arrow-right">Download PDF</a></div>
+                <div><a href="/contact/request-more-info/?product_id=<?= $post->ID;  ?>" class="btn btn-primary btn-arrow-right">Request more info</a></div>
+                <div><a href="<?php the_field('product_pdf'); ?>" class="btn btn-secondary btn-arrow-right" download>Download PDF</a></div>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-
-          </div>
+          <div class="modal-footer"></div>
         </div>
       </div>
     </div>

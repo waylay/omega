@@ -37,3 +37,50 @@
     @extend .btn-default;
   }
 }
+.wpcf7{
+  .btn{
+    padding: 6px 20px 4px;
+  }
+  @media (min-width: $screen-md) {
+    max-width: 570px;
+    .btn{
+      font-size: 18px;
+      padding: 6px 40px 4px;
+    }
+  }
+  .form-group{
+    position: relative;
+  }
+  .required{
+    position: absolute;
+    top:0;
+    right: -10px;
+  }
+}
+.product-box{
+  height: auto;
+  font-size: 100%;
+  .col-sm-4{
+    text-align: center;
+    @media (min-width: $screen-sm) {
+      padding-right: 0;
+      img{
+        max-width: 120px;
+      }
+    }
+  }
+  .col-sm-8{
+    padding-top: 1.2em;
+    p{
+      margin-bottom: 0;
+      strong{
+        font-weight: 600;
+      }
+    }
+    @media (min-width: $screen-sm) {
+      padding-left: 0;
+      padding-top: 1.5em;
+    }
+  }
+
+}

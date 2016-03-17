@@ -1,3 +1,10 @@
+<?php if(we_should_display_the_sharing_icons()): ?>
+<div class="container">
+  <div class="share-icons">
+    <span>Share this page: </span><?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>
+  </div>
+</div>
+<?php endif; ?>
 <footer class="content-info">
   <div class="container">
     <div class="row">

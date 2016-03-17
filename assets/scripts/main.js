@@ -37,7 +37,7 @@
           .addClass('collapsed')
           .children('ul').hide();
 
-
+          $(".wpcf7-validates-as-required").after("<span class='required'>*</span>");
 
       },
       finalize: function() {
