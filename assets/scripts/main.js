@@ -56,8 +56,8 @@
         $('.flexslider').flexslider({
           animation: "fade",
           controlNav: false,
-          prevText: "",
-          nextText: "",
+          prevText: "&laquo;",
+          nextText: "&raquo;",
           start: function(slider){
             $('header.banner').css('background-image', 'url(' + $(slider.slides[slider.currentSlide]).data('headerbg') + ')');
           },

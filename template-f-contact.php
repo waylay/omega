@@ -17,3 +17,13 @@ if ( function_exists( 'wpcf7_enqueue_styles' ) ) {
   <?php get_template_part('templates/page', 'header'); ?>
   <?php get_template_part('templates/content', 'page'); ?>
 <?php endwhile; ?>
+
+<?php if (get_field('bussiness_hours')) { ?>
+ <div class="bussiness_hours">
+   <div class="row">
+     <div class="col-xs-12">
+       <?php the_field('bussiness_hours'); ?>
+     </div>
+   </div>
+ </div>
+<?php } ?>

@@ -1,4 +1,5 @@
 <?php
+// debugging
 function dd($value)
 {
   echo "<pre style='position:fixed'>";
@@ -6,14 +7,36 @@ function dd($value)
   echo "</pre>";
 
 }
+function omega_template_redirect() {
+  if (! is_admin() ) {
+    global $post;
+    if ( is_page('contact') ) {
+      wp_redirect( '/contact/contact-information/', 301 );
+      exit();
+    }
+    if ( is_page('about') ) {
+      wp_redirect( '/about/company-background/', 301 );
+      exit();
+    }
+  }
 
+}
+add_action( 'template_redirect', 'omega_template_redirect', 1 );
 function header_background(){
   if (get_field('header_background')) {
     $image = get_field('header_background', false);
-    return 'style="background-image:url('.$image['url'].')"';
+    return 'style="background-image:url('.$image['url'].')" !important;';
   }
 }
 
+function this_is_a_blog_page(){
+  if (is_home() || is_singular( 'post' ) || is_post_type_archive('post') || is_tag() || is_category() || is_date() || is_search()) {
+    if(!is_post_type_archive('product')){
+      return true;
+    }
+  }
+  return false;
+}
 
 function front_page_slider(){
 ?>
@@ -26,7 +49,7 @@ function front_page_slider(){
         <div class="col-xs-7 col-sm-8 slider_text">
           <h2>WIRELESS TECHNOLOGIES</h2>
           <h3 class="hidden-xs">Omega is a distributor of Motorola Two Way Radios, Icom Radios, and other wireless solutions.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
+          <a href="#" class="btn btn-primary btn-arrow-right">View Products</a>
         </div>
         <div class="col-xs-5 col-sm-4 slider_image">
           <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide1.png">
@@ -37,7 +60,7 @@ function front_page_slider(){
         <div class="col-xs-7 col-sm-8 slider_text">
           <h2>NURSE CALL SYSTEMS</h2>
           <h3 class="hidden-xs">It is a long established fact that any reader will be distracted by the readable content of a page when he is looking at its layout.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
+          <a href="#" class="btn btn-primary btn-arrow-right">View Products</a>
         </div>
         <div class="col-xs-5 col-sm-4 slider_image">
           <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide2.png">
@@ -133,10 +156,10 @@ function page_header_area(){
     $parent_title = $parent->post_title;
 
   }
-  if( is_single() || is_category() ){
+  if( this_is_a_blog_page() ){
     $parent_title = get_the_title( get_option('page_for_posts', true));
   }
-  if( is_tax('product_category') || is_archive('product')){
+  if( is_tax('product_category') || is_post_type_archive('product' ) ){
     $parent_title = 'Products';
   }
   if('' != $parent_title): ?>
@@ -162,10 +185,19 @@ function breadcrumbs_and_search(){
   <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
     <label>
         <span class="screen-reader-text"><?php echo _x( 'Search Products:', 'label' ) ?></span>
-        <input type="search" class="search-field"
+        <?php if (this_is_a_blog_page()): ?>
+          <input type="search" class="search-field" required="true"
+            placeholder="<?php echo esc_attr_x( 'Search Blog', 'placeholder' ) ?>"
+            value="<?php echo get_search_query() ?>" name="s"
+            title="<?php echo esc_attr_x( 'Search Blog', 'label' ) ?>" />
+        <?php else: ?>
+          <input type="hidden" name="post_type" value="product" />
+          <input type="search" class="search-field" required="true"
             placeholder="<?php echo esc_attr_x( 'Search Products', 'placeholder' ) ?>"
             value="<?php echo get_search_query() ?>" name="s"
             title="<?php echo esc_attr_x( 'Search Products', 'label' ) ?>" />
+        <?php endif ?>
+
     </label>
   </form>
 </div>
@@ -174,8 +206,7 @@ function breadcrumbs_and_search(){
 }
 
 
-function expandable_products_list()
-{
+function expandable_products_list(){
 
 $args = array(
   'taxonomy'     => 'product_category',
@@ -193,16 +224,58 @@ $args = array(
     <?php wp_list_categories( $args ); ?>
   </ul>
 </div>
-   <?php
+<?php
 }
 
-function sidebar_list_child_pages() {
+function expandable_blog_categories_list(){
+
+$args = array(
+  'taxonomy'     => 'category',
+  'orderby'      => 'name',
+  'show_count'   => 0,
+  'pad_counts'   => 0,
+  'hierarchical' => 1,
+  'title_li'     => '',
+  'hide_empty'   => 0
+);
+?>
+<div id="listContainer">
+  <h3>Blog Categories</h3>
+  <ul id="expList">
+    <?php wp_list_categories( $args ); ?>
+  </ul>
+
+<?php
+ $archive_args = array(
+  'type'            => 'yearly',
+  'limit'           => '',
+  'format'          => 'html',
+  'before'          => '',
+  'after'           => '',
+  'show_post_count' => false,
+  'echo'            => 1,
+  'order'           => 'DESC',
+        'post_type'     => 'post'
+);
+?>
+<h3>Blog Archives</h3>
+<ul>
+<?php wp_get_archives( $archive_args ); ?>
+</ul>
+</div>
+<?php
+}
+
+
+function sidebar_list_child_pages(){
 
   global $post;
-  if (is_page_template( 'template-b1-common.php' ) || is_page_template( 'template-b2-team.php' )) {
+  if (is_page_template( 'template-b1-common.php' ) ||
+      is_page_template( 'template-b2-team.php' ) ||
+      is_page_template( 'template-f-contact.php' )) {
     if ( is_page() ){
       if ($post->post_parent) {
-        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&exclude=297' );
         $parent_title = get_the_title($post->post_parent);
       }else{
         $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
@@ -220,11 +293,11 @@ function sidebar_list_child_pages() {
 }
 
 
-function initiate_masonry_on_solutions_page() {
+function initiate_masonry_on_solutions_page(){
   if ( is_page_template( 'template-c1-solutions.php' ) ) {
 ?>
 <script type="text/javascript">
-(function($) {
+$(window).load(function() {
    $('.grid').masonry({
     // options...
     columnWidth: 263,
@@ -233,7 +306,7 @@ function initiate_masonry_on_solutions_page() {
     gutter: 4
 
   });
-})(jQuery);
+});
 </script>
 <?php
   }
@@ -266,7 +339,7 @@ function omega_nav_classes( $classes, $item ) {
 add_filter( 'nav_menu_css_class', 'omega_nav_classes', 10, 2 );
 
 
-function omega_custom_pagination_links() {
+function omega_custom_pagination_links(){
     global $wp_query;
     $big = 99999; // need an unlikely integer
     $pages = paginate_links( array(
@@ -290,11 +363,21 @@ function omega_custom_pagination_links() {
 }
 
 function we_should_display_the_sharing_icons(){
-  if(is_front_page()){
+  global $post;
+  if (!function_exists( 'ADDTOANY_SHARE_SAVE_KIT' )) {
+    return false;
+  }
+  if(is_front_page() || is_archive() || is_home() || is_search()){
     return false;
   }
 
   if(is_tax('product_category' )){
+    return false;
+  }
+
+  $sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
+  $sharing_disabled = apply_filters( 'addtoany_sharing_disabled', $sharing_disabled );
+  if ( get_post_status( get_the_ID() ) == 'private' || ! empty( $sharing_disabled ) ){
     return false;
   }
 

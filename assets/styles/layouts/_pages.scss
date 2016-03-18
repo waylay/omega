@@ -1,4 +1,4 @@
-.page, .archive, .single{
+.page, .archive, .single, .blog, .search{
   .content{
     position: relative;
     padding-top:25px;
@@ -78,5 +78,42 @@
       }
     }
 
+    @media(min-width:$screen-lg){
+      .contact-info-box{
+        padding-right: 80px;
+      }
+    }
+
+  }
+}
+
+// Other Tweaks
+.blog .page-header{
+  display: none;
+}
+
+.bussiness_hours{
+  border: 1px solid #999;
+  border-left: 42px solid $brand-primary;
+  padding-top: 15px;
+  h1{
+    margin-bottom: 0;
+  }
+  h4{
+
+  }
+}
+
+.main .search-form{
+  text-align: center;
+  margin-bottom: 40px;
+  input{
+    border:1px solid #eee;
+    padding: 5px 10px;
+  }
+  .search-submit{
+    @extend .btn;
+    @extend .btn-primary;
+    font-size: 100%;
   }
 }

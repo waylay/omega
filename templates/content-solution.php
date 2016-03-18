@@ -10,9 +10,7 @@
             <h3><strong>Featured Project</strong></h3>
             <hr>
             <h5> <?= $featured_project->post_title; ?> </h5>
-            <p><?= wp_trim_words( $featured_project->post_content, 30, '...' ); ?>
-              <br><a class="btn btn-primary btn-arrow-right" href="<?php echo $featured_project->guid; ?>">read more</a>
-            </p>
+            <p><?php setup_postdata($featured_project); the_excerpt(); wp_reset_postdata();?></p>
           </div>
         </div>
       </div>
@@ -71,13 +69,11 @@
           </div>
           <?php endif; ?>
         </div>
-
+        <?php if (get_field('related_questions')) { ?>
         <div class="related-questions col-xs-12">
-          <h2>Have Questions?</h2>
-          <p>Contact one of communication solution experts today!</p>
-          <a href="/contact" class="btn btn-primary btn-arrow-right">Contact Us</a>
+          <?php the_field('related_questions'); ?>
         </div>
-
+        <?php } ?>
       </div>
   </div>
 <?php else: the_content(); endif; ?>

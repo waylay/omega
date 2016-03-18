@@ -1,4 +1,4 @@
-<header class="banner" >
+<header class="banner" <?= header_background(); ?>>
 <div class="nav-container">
   <div class="container">
     <nav class="navbar" role="navigation">

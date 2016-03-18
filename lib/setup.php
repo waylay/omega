@@ -74,6 +74,15 @@ function widgets_init() {
   ]);
 
   register_sidebar([
+    'name'          => __('Blog', 'sage'),
+    'id'            => 'sidebar-blog',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>'
+  ]);
+
+  register_sidebar([
     'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="col-sm-6 widget %1$s %2$s">',
@@ -95,7 +104,6 @@ function display_sidebar() {
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
-    is_page_template('template-custom.php'),
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -113,7 +121,14 @@ function assets() {
 
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
   if (is_page_template( 'template-c1-solutions.php' )){
-    wp_enqueue_script('sage/masonry', 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js', ['jquery'], null, true);
+    wp_enqueue_script('sage/masonry', 'https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js', ['jquery'], null, true);
   }
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+function get_12_products_on_archives( $query ) {
+    if( !is_admin() && $query->is_main_query() && ( is_post_type_archive( 'product' ) || is_tax('product_category') ) ) {
+        $query->set( 'posts_per_page', '12' );
+    }
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\\get_12_products_on_archives' );

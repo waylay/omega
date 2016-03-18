@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-primary btn-arrow-right">Contact <?= strtok(get_sub_field('name'), " "); ?></a>
+            <a href="mailto:<?php the_sub_field('contact_email'); ?>?Subject=Hi%20<?= strtok(get_sub_field('name'), " "); ?>," class="btn btn-primary btn-arrow-right">Contact <?= strtok(get_sub_field('name'), " "); ?></a>
           </div>
         </div>
       </div>
