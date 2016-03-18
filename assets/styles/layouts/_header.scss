@@ -2,7 +2,6 @@ header.banner{
   background-size: cover;
   position: relative;
   transition: background-image 1s ease-in-out;
-  background-image: url('../images/default_page_bg.png');
   body.home &{
     background-image: none;
   }

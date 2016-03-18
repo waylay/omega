@@ -28,7 +28,7 @@ function omega_template_redirect() {
 add_action( 'template_redirect', 'omega_template_redirect', 1 );
 
 
-
+// Sets the headere bg using default backgorunds and specific ones (assigned for posts and pages)
 function header_background(){
   $image = '';
 
@@ -48,6 +48,7 @@ function header_background(){
   return 'style="background-image:url('.$image.')" !important;';
 }
 
+// Check if the page belongs to the blog
 function this_is_a_blog_page(){
   if (is_home() || is_singular( 'post' ) || is_post_type_archive('post') || is_tag() || is_category() || is_date() || is_search()) {
     if(!is_post_type_archive('product')){
@@ -57,6 +58,8 @@ function this_is_a_blog_page(){
   return false;
 }
 
+
+// Generates the page slider
 function front_page_slider(){ ?>
 <div class="container slider-container">
   <div class="flexslider">
@@ -107,6 +110,8 @@ endif; ?>
 <?php
 }
 
+
+// Generates the front cards.
 function front_page_cards(){ ?>
 
 <div class="container homecards">
@@ -148,6 +153,8 @@ endif; ?>
 }
 
 
+// The H1 title shown inside the header
+
 function page_header_area(){
 
   $parent_title = '';
@@ -179,6 +186,9 @@ function page_header_area(){
 
 
 
+
+// Shows the breadcrumbs and the search form above the content.
+// The Search is dynamic (for posts and for products) depending of the page you're looking at
 function breadcrumbs_and_search(){
   if(!is_front_page()){ ?>
 <div class="hidden-xs breadcrumbs_and_search">
@@ -212,6 +222,21 @@ function breadcrumbs_and_search(){
 <?php } //endif
 }
 
+// Limit search to a post types
+function limit_search_results_filter($query) {
+  if(isset($_GET['post_type'])){
+    $post_type = $_GET['post_type'];
+  }
+  if (!isset($post_type)) {
+    $post_type = 'post';
+  }
+    if ($query->is_search) {
+        $query->set('post_type', $post_type);
+    };
+    return $query;
+};
+
+add_filter('pre_get_posts','limit_search_results_filter',99);
 
 function expandable_products_list(){
 

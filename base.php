@@ -37,5 +37,6 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/footer');
       wp_footer();
     ?>
+    <?php the_field('footer_html', 'option'); ?>
   </body>
 </html>
