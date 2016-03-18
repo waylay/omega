@@ -113,3 +113,30 @@
 
 
 }
+
+
+
+.sidecards{
+  .sidecard{
+    .card-image{
+      display: block;
+      position: relative;
+      max-height: 76px;
+      overflow: hidden;
+      a.btn{
+        position: absolute;
+        top: 40px;
+        left:0;
+        color: #fff;
+      }
+
+    }
+    .card-content{
+      font-size: 15px;
+      margin-top: 2px;
+      margin-bottom: 34px;
+      line-height: 19px;
+    }
+  }
+
+}

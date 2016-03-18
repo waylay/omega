@@ -15,7 +15,7 @@
   <?php while( has_sub_field('team_members') ): $member = get_sub_field_object('name'); $UID++; ?>
 
     <div class="col-md-6">
-      <img src="<?php the_sub_field('picture'); ?>" alt="<?php the_sub_field('name'); ?>" data-toggle="modal" data-target="#<?= $member['key'].$UID; ?>" />
+      <img src="<?php $team_member_picture = wp_get_attachment_image_src( get_sub_field('picture'), 'team-picture' ); echo $team_member_picture[0]; ?>" alt="<?php the_sub_field('name'); ?>" data-toggle="modal" data-target="#<?= $member['key'].$UID; ?>" />
         <h4 data-toggle="modal" data-target="#<?= $member['key'].$UID; ?>"><?php the_sub_field('name'); ?></h4>
     </div>
 

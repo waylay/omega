@@ -18,9 +18,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="<?= home_url(); ?>" title="<?php bloginfo('name'); ?>">
-          <img class="logo" src="<?= get_stylesheet_directory_uri() ?>/dist/images/logo.png"
-          alt="<?php bloginfo('name'); ?>">
-
+          <img class="logo" src="<?= get_field('site_logo','options'); ?>" alt="<?php bloginfo('name'); ?>">
         </a>
       </div>
 

@@ -30,10 +30,22 @@ add_action( 'template_redirect', 'omega_template_redirect', 1 );
 
 
 function header_background(){
-  if (get_field('header_background')) {
-    $image = get_field('header_background', false);
-    return 'style="background-image:url('.$image['url'].')" !important;';
+  $image = '';
+
+  // Load default values
+  if(is_page()){
+    $image = get_field('header_for_pages','option');
+  } else if(this_is_a_blog_page()){
+    $image = get_field('header_for_blog','option');
+  } else {
+    $image = get_field('header_for_products','option');
   }
+
+  // Overwrite them if we have a specific bg
+  if (get_field('header_background')) {
+    $image = get_field('header_background');
+  }
+  return 'style="background-image:url('.$image.')" !important;';
 }
 
 function this_is_a_blog_page(){
@@ -45,112 +57,90 @@ function this_is_a_blog_page(){
   return false;
 }
 
-function front_page_slider(){
-?>
-
+function front_page_slider(){ ?>
 <div class="container slider-container">
   <div class="flexslider">
     <ul class="slides">
-      <li data-headerbg="/wp-content/uploads/2016/03/header_home.jpg">
+<?php // check if the repeater field has rows of data
+if( have_rows('slides') ):
+
+  // loop through the rows of data
+  while ( have_rows('slides') ) : the_row();
+
+    // display a sub field value
+    $slide_title      = get_sub_field('slide_title');
+    $slide_text       = get_sub_field('slide_text');
+    $slide_button_text= get_sub_field('slide_button_text');
+    $slide_button_url = get_sub_field('slide_button_url');
+    $slide_background_attr = wp_get_attachment_image_src( get_sub_field('slide_background'), 'home-slide-background' );
+    $slide_background = $slide_background_attr[0];
+    $slide_image_attr      = wp_get_attachment_image_src( get_sub_field('slide_image'), 'home-slide-image' );
+    $slide_image      = $slide_image_attr[0];
+
+    ?>
+      <li data-headerbg="<?= $slide_background; ?>">
 
         <div class="col-xs-7 col-sm-8 slider_text">
-          <h2>WIRELESS TECHNOLOGIES</h2>
-          <h3 class="hidden-xs">Omega is a distributor of Motorola Two Way Radios, Icom Radios, and other wireless solutions.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
+          <h2><?= $slide_title; ?></h2>
+          <h3 class="hidden-xs"><?= $slide_text; ?></h3>
+          <a href="<?= $slide_button_url; ?>" class="btn btn-primary btn-arrow-right"><?= $slide_button_text; ?></a>
         </div>
         <div class="col-xs-5 col-sm-4 slider_image">
-          <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide1.png">
+          <img src="<?= $slide_image; ?>">
         </div>
 
       </li>
-      <li data-headerbg="/wp-content/uploads/2016/03/header_home1.jpg">
-        <div class="col-xs-7 col-sm-8 slider_text">
-          <h2>NURSE CALL SYSTEMS</h2>
-          <h3 class="hidden-xs">It is a long established fact that any reader will be distracted by the readable content of a page when he is looking at its layout.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
-        </div>
-        <div class="col-xs-5 col-sm-4 slider_image">
-          <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide2.png">
-        </div>
-      </li>
-      <li data-headerbg="/wp-content/uploads/2016/03/header_home.jpg">
-        <div class="col-xs-7 col-sm-8 slider_text">
-          <h2>Wandering Management</h2>
-          <h3 class="hidden-xs">One of the highest risks within a senior care or assisted living environment is resident elopement.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
-        </div>
-        <div class="col-xs-5 col-sm-4 slider_image">
-          <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide3.png">
-        </div>
-      </li>
+
+    <?php
+  endwhile;
+
+else :
+
+    echo "<li>Please set up the home page slider.</li>";
+
+endif; ?>
     </ul>
-
   </div>
 </div>
+
 
 <?php
 }
 
-function front_page_cards()
-{
-?>
+function front_page_cards(){ ?>
 
 <div class="container homecards">
 
-  <div class="col-sm-3">
-    <div class="homecard">
-      <div class="card-title"><a href="#">Business &amp; Government</a></div>
-      <div class="card-content">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem.</p>
-      </div>
-      <div class="card-image">
-        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
-        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card1.png">
+<?php // check if the repeater field has rows of data
+if( have_rows('page_cards', 'option') ):
+
+  // loop through the rows of data
+  while ( have_rows('page_cards', 'option') ) : the_row();
+
+    // display a sub field value
+    $card = get_sub_field('page_card','option');
+
+    ?>
+    <div class="col-sm-3">
+      <div class="homecard">
+        <div class="card-title"><a href="<?= get_permalink($card->ID); ?>"><?= $card->post_title; ?></a></div>
+        <div class="card-content">
+          <p><?=  wp_trim_words( $card->post_content, 15, '...' ); ?></p>
+        </div>
+        <div class="card-image">
+          <a href="<?= get_permalink($card->ID); ?>" class="btn btn-primary btn-arrow-right">more</a>
+          <?= get_the_post_thumbnail($card->ID, "home-card");  ?>
+        </div>
       </div>
     </div>
-  </div>
+  <?php
+  endwhile;
 
+else :
 
-  <div class="col-sm-3">
-    <div class="homecard">
-      <div class="card-title"><a href="#">Healthcare</a></div>
-      <div class="card-content">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab.</p>
-      </div>
-      <div class="card-image">
-        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
-        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card2.png">
-      </div>
-    </div>
-  </div>
+    echo "Please set the cards in the Setup/Home Cards option.";
 
-
-  <div class="col-sm-3">
-    <div class="homecard">
-      <div class="card-title"><a href="#">Big White Cable</a></div>
-      <div class="card-content">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-      </div>
-      <div class="card-image">
-        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
-        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card3.png">
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-sm-3">
-    <div class="homecard">
-      <div class="card-title"><a href="#">Fire Monitoring</a></div>
-      <div class="card-content">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-      </div>
-      <div class="card-image">
-        <a href="#" class="btn btn-primary btn-arrow-right">more</a>
-        <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/card4.png">
-      </div>
-    </div>
-  </div>
+endif; ?>
 
 </div>
 
@@ -290,7 +280,7 @@ function sidebar_list_child_pages(){
   if (is_page_template( 'template-b1-common.php' ) ||
       is_page_template( 'template-b2-team.php' ) ||
       is_page_template( 'template-f-contact.php' )) {
-    if ( is_page() ){
+
       if ($post->post_parent) {
         $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&exclude=297' );
         $parent_title = get_the_title($post->post_parent);
@@ -298,16 +288,74 @@ function sidebar_list_child_pages(){
         $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
         $parent_title = get_the_title($post->ID);
       }
-    }
 
+
+      if (isset($childpages )) {
+        $string = '<section class="widget sub_pages"><h3>'.$parent_title.'</h3><ul>' . $childpages . '</ul></section>';
+        echo $string;
+      }
+  }
+
+
+}
+
+function sidebar_list_child_solutions(){
+
+  global $post;
+  if (is_page_template( 'template-c1-solutions.php' )) {
+    $childpages = '<li class="page_item current_page_item"><a href="'.get_the_permalink($post->ID).'">Industry Solutions</a></li>';
+    $childpages .= wp_list_pages( 'sort_column=menu_order&title_li=&echo=0&include=432,430'); // Services and Resources pages
     if (isset($childpages )) {
-      $string = '<section class="widget sub_pages"><h3>'.$parent_title.'</h3><ul>' . $childpages . '</ul></section>';
+      $string = '<section class="widget sub_pages"><h3>'.$post->post_title.'</h3><ul>' . $childpages . '</ul></section>';
       echo $string;
     }
   }
 
 
 }
+
+function sidebar_list_cards(){
+
+  if (is_page_template( 'template-b1-common.php' ) || is_page_template( 'template-b2-team.php' ) ) { ?>
+
+<section class="widget sub_pages sidecards">
+<?php // check if the repeater field has rows of data
+if( have_rows('page_cards', 'option') ):
+
+  // loop through the rows of data
+  while ( have_rows('page_cards', 'option') ) : the_row();
+
+    // display a sub field value
+    $card = get_sub_field('page_card','option');
+
+    ?>
+    <h3><a href="<?= get_permalink($card->ID); ?>"><?= $card->post_title; ?></a></h3>
+    <div class="sidecard">
+      <div class="card-image">
+        <a href="<?= get_permalink($card->ID); ?>" class="btn btn-primary btn-arrow-right">more</a>
+        <?= get_the_post_thumbnail($card->ID, "home-card");  ?>
+      </div>
+      <div class="card-content">
+        <?=  wp_trim_words( $card->post_content, 15, '...' ); ?>
+      </div>
+
+    </div>
+
+  <?php
+  endwhile;
+
+else :
+
+    echo "Please set the cards in the Setup/Home Cards option.";
+
+endif; ?>
+
+</section>
+
+<?php
+  } // endif
+}
+
 
 
 function initiate_masonry_on_solutions_page(){
