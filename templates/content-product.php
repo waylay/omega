@@ -3,7 +3,7 @@
     <?php global $post; the_post_thumbnail('product-thumbnail'); ?>
     <div class="view-details-download">
       <a class="btn btn-primary" data-toggle="modal" data-target="#<?= $post->post_name; ?>">View Details</a>
-      <a href="<?php the_field('product_pdf'); ?>" class="btn btn-secondary">Download PDF</a>
+      <a href="<?php the_field('product_pdf'); ?>" class="btn btn-secondary" download>Download PDF</a>
     </div>
   </header>
   <div class="entry-summary">

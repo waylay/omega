@@ -26,7 +26,16 @@ global $post;
 
       if ( has_post_thumbnail() ): ?>
       <article class="grid-item">
-        <?php the_post_thumbnail('full',array( 'class' => 'hidden-xs hidden-sm' )); ?>
+        <?php
+        // Get the solution full width image and take out the width and height
+        $tn_id = get_post_thumbnail_id( $post->ID );
+        $img = wp_get_attachment_image_src( $tn_id, 'full' );
+        $width = $img[1];  $height = $img[2];
+        // Now, if the original image is portrait, use a vertical thumbnail, otherwise, use an horizontal one
+        $grid_thumb_size = ($height > (1.4 * $width)) ? 'grid-vertical' : 'grid-horizontal';
+
+        ?>
+        <?php the_post_thumbnail($grid_thumb_size ,array( 'class' => 'hidden-xs hidden-sm' )); ?>
 
         <a class="overlay" href="<?php the_permalink(); ?>">
           <div class="overlay-description">

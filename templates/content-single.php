@@ -3,7 +3,7 @@
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
       <?php get_template_part('templates/entry-meta'); ?>
-      <?php the_post_thumbnail('full'); ?>
+      <?php the_post_thumbnail('large'); ?>
     </header>
     <div class="entry-content">
       <?php the_content(); ?>

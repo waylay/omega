@@ -4,13 +4,14 @@
         <?php  $featured_project = get_field('featured_project'); ?>
         <div class="row">
           <div class="col-sm-5 col-md-12">
-            <?= get_the_post_thumbnail($featured_project,'medium'); ?>
+            <?= get_the_post_thumbnail($featured_project,'grid-vertical'); ?>
           </div>
           <div class="col-sm-7 col-md-12">
             <h3><strong>Featured Project</strong></h3>
             <hr>
             <h5> <?= $featured_project->post_title; ?> </h5>
-            <p><?php setup_postdata($featured_project); the_excerpt(); wp_reset_postdata();?></p>
+            <p><?php global $post; setup_postdata($featured_project); echo wp_trim_words( get_the_content(), 40, '...' ); wp_reset_postdata(); ?></p>
+            <a href="<?= get_permalink($featured_project); ?>" class="more">read more</a>
           </div>
         </div>
       </div>

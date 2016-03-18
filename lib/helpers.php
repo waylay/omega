@@ -7,6 +7,10 @@ function dd($value)
   echo "</pre>";
 
 }
+
+/*
+* Redirect 'Menu Only' pages
+*/
 function omega_template_redirect() {
   if (! is_admin() ) {
     global $post;
@@ -22,6 +26,9 @@ function omega_template_redirect() {
 
 }
 add_action( 'template_redirect', 'omega_template_redirect', 1 );
+
+
+
 function header_background(){
   if (get_field('header_background')) {
     $image = get_field('header_background', false);
@@ -49,7 +56,7 @@ function front_page_slider(){
         <div class="col-xs-7 col-sm-8 slider_text">
           <h2>WIRELESS TECHNOLOGIES</h2>
           <h3 class="hidden-xs">Omega is a distributor of Motorola Two Way Radios, Icom Radios, and other wireless solutions.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">View Products</a>
+          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
         </div>
         <div class="col-xs-5 col-sm-4 slider_image">
           <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide1.png">
@@ -60,10 +67,20 @@ function front_page_slider(){
         <div class="col-xs-7 col-sm-8 slider_text">
           <h2>NURSE CALL SYSTEMS</h2>
           <h3 class="hidden-xs">It is a long established fact that any reader will be distracted by the readable content of a page when he is looking at its layout.</h3>
-          <a href="#" class="btn btn-primary btn-arrow-right">View Products</a>
+          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
         </div>
         <div class="col-xs-5 col-sm-4 slider_image">
           <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide2.png">
+        </div>
+      </li>
+      <li data-headerbg="/wp-content/uploads/2016/03/header_home.jpg">
+        <div class="col-xs-7 col-sm-8 slider_text">
+          <h2>Wandering Management</h2>
+          <h3 class="hidden-xs">One of the highest risks within a senior care or assisted living environment is resident elopement.</h3>
+          <a href="#" class="btn btn-primary btn-arrow-right">VIEW PRODUCTS</a>
+        </div>
+        <div class="col-xs-5 col-sm-4 slider_image">
+          <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/slide3.png">
         </div>
       </li>
     </ul>

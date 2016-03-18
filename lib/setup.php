@@ -52,6 +52,11 @@ function setup() {
   // Product thumbnails
   add_image_size( 'product-thumbnail', 150, 200, true ); // (cropped)
 
+  add_image_size( 'grid-horizontal', 531, 211, true ); // (cropped)
+  add_image_size( 'grid-vertical', 263, 426, true ); // (cropped)
+
+
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
