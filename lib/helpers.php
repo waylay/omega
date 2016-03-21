@@ -42,7 +42,7 @@ function header_background(){
   }
 
   // Overwrite them if we have a specific bg
-  if (get_field('header_background')) {
+  if (get_field('header_background') && ( is_single() || is_page() ) ) {
     $image = get_field('header_background');
   }
   return 'style="background-image:url('.$image.')" !important;';
@@ -307,13 +307,17 @@ function sidebar_list_child_pages(){
       is_page_template( 'template-f-contact.php' )) {
 
       if ($post->post_parent) {
+        // we are looking at a child page
         $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&exclude=297' );
         $parent_title = get_the_title($post->post_parent);
       }else{
-        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-        $parent_title = get_the_title($post->ID);
+        // check to see if the page has child pages
+        $children = get_pages('child_of='.$post->ID);
+        if( count( $children ) != 0 ){
+          $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+          $parent_title = get_the_title($post->ID);
+        }
       }
-
 
       if (isset($childpages )) {
         $string = '<section class="widget sub_pages"><h3>'.$parent_title.'</h3><ul>' . $childpages . '</ul></section>';

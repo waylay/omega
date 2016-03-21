@@ -76,6 +76,7 @@ header.banner{
         font-size: 18px;
         font-weight: 400;
         .nav{
+          padding-left: 20px;
           .dropdown-toggle .caret { display:none; }
           li.active a, li a:hover, li.current-menu-parent>a, li.current_page_parent>a{
             color: $brand-primary;
@@ -156,7 +157,6 @@ header.banner{
         }
         .navbar-collapse{
           margin-top:24px;
-
         }
       }
     }
@@ -190,6 +190,15 @@ header.banner{
       .navbar{
         .navbar-brand {
           margin:13px 71px 23px 15px;
+        }
+        .navbar-collapse{
+          .nav{
+            padding-left: 0;
+            .dropdown-menu .dropdown-menu{
+              left: 100%;
+              top: 0;
+            }
+          }
         }
       }
     }

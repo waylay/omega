@@ -19,10 +19,22 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        $('.dropdown a.dropdown-toggle').click( function(event) {
-            if($(this).parent().hasClass('open'))
-                location.assign($(this).attr('href'));
+
+
+
+        $('.navbar .dropdown').hover(function() {
+          $(this).addClass('opened').find('.dropdown-menu').first().stop(true, true).delay(50).slideDown('fast');
+
+          }, function() {
+          $(this).removeClass('opened').find('.dropdown-menu').first().stop(true, true).delay(150).slideUp('fast');
+
         });
+        if ($(window).width() > 769) {
+          $('.dropdown a.dropdown-toggle').click( function(event) {
+              if($(this).parent().hasClass('opened'))
+                  location.assign($(this).attr('href'));
+          });
+        }
         // Sidebar expand list
         $('#expList').find('li:has(ul)')
           .click( function(event) {

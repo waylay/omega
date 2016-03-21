@@ -35,7 +35,7 @@
                 <?php the_sub_field('bio'); ?>
               </div>
               <div class="col-sm-4 hidden-xs">
-                <div class="alignright modal-profilepicture" style="background: url('<?php the_sub_field('picture'); ?>') no-repeat scroll center;"></div>
+                <div class="alignright modal-profilepicture" style="background: url('<?= $team_member_picture[0]; ?>') no-repeat scroll center;"></div>
               </div>
             </div>
           </div>
