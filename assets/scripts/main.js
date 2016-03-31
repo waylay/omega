@@ -31,8 +31,9 @@
         });
         if ($(window).width() > 769) {
           $('.dropdown a.dropdown-toggle').click( function(event) {
-              if($(this).parent().hasClass('opened'))
-                  location.assign($(this).attr('href'));
+              if($(this).parent().hasClass('opened')){
+                location.assign($(this).attr('href'));
+              }
           });
         }
         // Sidebar expand list
