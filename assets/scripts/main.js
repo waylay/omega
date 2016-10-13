@@ -31,25 +31,32 @@
         });
         if ($(window).width() > 769) {
           $('.dropdown a.dropdown-toggle').click( function(event) {
-              if($(this).parent().hasClass('opened'))
-                  location.assign($(this).attr('href'));
+              if($(this).parent().hasClass('opened')){
+                location.assign($(this).attr('href'));
+              }
           });
         }
         // Sidebar expand list
         $('#expList').find('li:has(ul)')
           .click( function(event) {
-              if (this === event.target) {
-                  $(this).toggleClass('expanded');
-                  $(this).children('ul').toggle('medium');
-              }
-              if(!$(this).hasClass('expanded')){
-                //return false;
-              }
-          })
-          .addClass('collapsed')
-          .children('ul').hide();
+            if (this === event.target) {
+                $(this).toggleClass('expanded');
+                $(this).children('ul').toggle('medium');
+            }
+            if(!$(this).hasClass('expanded')){
+              return false;
+            }
+        })
+        .addClass('collapsed')
+        .children('ul').hide();
 
-          $(".wpcf7-validates-as-required").after("<span class='required'>*</span>");
+        $('#expList').find('li:has(ul) > a')
+          .click( function(event) {
+            event.preventDefault();
+            $(this).closest('li').trigger('click');
+        });
+
+        $(".wpcf7-validates-as-required").after("<span class='required'>*</span>");
 
       },
       finalize: function() {

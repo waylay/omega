@@ -8,7 +8,7 @@
   <?php // get_template_part('templates/page', 'header'); ?>
   <?php get_template_part('templates/content', 'page'); ?>
 
-
+<?php global $post; if(!$post->post_parent): ?>
 <div class="grid solutions">
 <?php
 global $post;
@@ -17,7 +17,13 @@ global $post;
       'posts_per_page' => -1,
       'post_parent'    => $post->ID,
       'orderby'       => 'menu_order',
-      'order'         => 'ASC'
+      'order'         => 'ASC',
+      'meta_query'    => array(
+          array(
+              'key'   => '_wp_page_template',
+              'value' => 'template-c2-solutions-pages.php'
+          )
+      )
    );
   $solutions = new WP_Query( $args );
 
@@ -53,5 +59,5 @@ global $post;
 ?>
 
 </div>
-
+<?php endif; ?>
 <?php endwhile; ?>

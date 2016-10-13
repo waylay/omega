@@ -7,9 +7,7 @@
 
         <div class="phone-facebook">
           <span><a href="tel:<?php the_field('phone','options'); ?>">Call <?php the_field('phone','options'); ?></span>
-          <a href="<?php the_field('facebook','options'); ?>" target="_blank">
-            <img class="hidden-xs" src="<?= get_stylesheet_directory_uri() ?>/dist/images/fb_icon.png" >
-          </a>
+       
         </div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_navigation"><span class="toggle-text">MENU</span>
           <span class="sr-only">Toggle navigation</span>

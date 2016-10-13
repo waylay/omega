@@ -126,7 +126,7 @@ if( have_rows('page_cards', 'option') ):
     $card = get_sub_field('page_card','option');
 
     ?>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <div class="homecard">
         <div class="card-title"><a href="<?= get_permalink($card->ID); ?>"><?= $card->post_title; ?></a></div>
         <div class="card-content">
@@ -332,14 +332,42 @@ function sidebar_list_child_solutions(){
 
   global $post;
   if (is_page_template( 'template-c1-solutions.php' )) {
-    $childpages = '<li class="page_item current_page_item"><a href="'.get_the_permalink($post->ID).'">Industry Solutions</a></li>';
-    $childpages .= wp_list_pages( 'sort_column=menu_order&title_li=&echo=0&include=432,430'); // Services and Resources pages
-    if (isset($childpages )) {
-      $string = '<section class="widget sub_pages"><h3>'.$post->post_title.'</h3><ul>' . $childpages . '</ul></section>';
-      echo $string;
-    }
-  }
 
+    $post_parent = ($post->post_parent > 0) ? $post->post_parent : $post->ID;
+
+    $args = array(
+        'post_type'      => 'page',
+        'posts_per_page' => -1,
+        'post_parent'    => $post_parent,
+        'orderby'       => 'menu_order',
+        'order'         => 'ASC',
+        'meta_query'    => array(
+            array(
+                'key'   => '_wp_page_template',
+                'value' => 'template-c1-solutions.php'
+            )
+        )
+    );
+
+    $solutions = new WP_Query( $args );
+
+    $post_ids = implode(',', wp_list_pluck( $solutions->posts, 'ID' ));
+
+      if($post->ID == $post_parent){
+        $childpages = '<li class="page_item current_page_item"><a href="'.get_the_permalink($post_parent).'">Industry Solutions</a></li>';
+      } else {
+        $childpages = '<li class="page_item"><a href="'.get_the_permalink($post_parent).'">Industry Solutions</a></li>';
+      }
+
+      if($post_ids){
+        $childpages .= wp_list_pages( 'sort_column=menu_order&title_li=&include=' . $post_ids . '&echo=0' );
+      }
+      if (isset($childpages )) {
+        $string = '<section class="widget sub_pages"><h3>'.get_the_title($post_parent).'</h3><ul>' . $childpages . '</ul></section>';
+        echo $string;
+      }
+
+  }
 
 }
 

@@ -27,11 +27,13 @@ ul#expList>li{
     background-color:#121212;
 }
 #expList li {
-    line-height:180%;
+    line-height:1em;
     text-indent:0px;
     background-position: 6px 9px;
-    padding-left: 20px;
     background-repeat: no-repeat;
+    padding-left: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 #expList li.current-cat a{
   color: $brand-primary;
@@ -50,4 +52,3 @@ ul#expList>li{
     clear: both;
     padding-left: 0;
 }
-

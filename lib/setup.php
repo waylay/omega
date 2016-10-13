@@ -55,7 +55,7 @@ function setup() {
   add_image_size( 'grid-horizontal', 531, 211, true ); // (cropped)
   add_image_size( 'grid-vertical', 263, 426, true ); // (cropped)
   add_image_size( 'team-picture', 433, 325, true ); // (cropped)
-  add_image_size( 'home-card', 234, 156, true ); // (cropped)
+  add_image_size( 'home-card', 299, 156, true ); // (cropped)
   add_image_size( 'home-slide-background', 1680, 790, true ); // (cropped)
   add_image_size( 'home-slide-image', 332, 498, true ); // (cropped)
 

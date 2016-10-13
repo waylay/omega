@@ -8,7 +8,7 @@
   display: flex;
   z-index: 2;
   overflow: hidden;
-  .col-sm-3{
+  .col-sm-4{
     display: flex;
     flex-direction: column;
     margin-top: auto;
@@ -39,7 +39,7 @@
   position: relative;
   display: block;
 
-  &, .col-sm-3{
+  &, .col-sm-4{
     padding: 0 !important;
   }
   .card-title{
@@ -54,7 +54,7 @@
   //background: url('../images/wide-shadow.png') bottom center no-repeat scroll;
   padding:0 18px;
   bottom:-134px;
-  .col-sm-3{
+  .col-sm-4{
     padding: 0 8px;
   }
   .homecard{
@@ -96,7 +96,7 @@
   }
   bottom:0;
   padding:0 74px !important;
-  .col-sm-3{
+  .col-sm-4{
     padding: 0 13px;
   }
   .card-title{
